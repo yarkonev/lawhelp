@@ -1,5 +1,7 @@
 from django.db import models
 
+import uuid
+
 
 class LegalEntity(models.Model):
     full_name = models.CharField(max_length=100)

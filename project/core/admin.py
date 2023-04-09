@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Court, Plaintiff, Defendant
 
-# Register your models here.
+
+admin.site.register(Court)
+admin.site.register(Defendant)
+admin.site.register(Plaintiff)
