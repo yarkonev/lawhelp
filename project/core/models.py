@@ -17,11 +17,21 @@ class LegalEntity(models.Model):
 class Plaintiff(LegalEntity):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
+    def __str__(self):
+        return self.short_name
+    
 
 class Defendant(LegalEntity):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
+    def __str__(self):
+        return self.short_name
+    
     
 class Court(models.Model):
     name = models.CharField(max_length=100)
-    address = models.TextField(max_length=200)    
+    address = models.TextField(max_length=200)
+    
+    def __str__(self):
+        return self.name
+        
