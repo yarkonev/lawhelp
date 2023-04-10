@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Case
 from .forms import CaseForm
 
@@ -13,6 +13,14 @@ def cases(request):
         'cases': cases,
     }
     return render(request, 'core/cases.html', context)
+
+
+def case(request, case_id):
+    case = get_object_or_404(Case, pk=case_id)
+    context = {
+        'case': case,
+    }
+    return render(request, 'core/case.html', context)
 
 
 def new_case(request):
