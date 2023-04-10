@@ -35,3 +35,13 @@ class Court(models.Model):
     def __str__(self):
         return self.name
         
+        
+class Case(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    case_number = models.CharField(max_length=30)
+    court = models.ForeignKey(Court, on_delete=models.CASCADE)
+    plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
+    defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.case_number
