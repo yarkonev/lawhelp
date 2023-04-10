@@ -5,4 +5,4 @@ from .models import Case
 class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
-        fields = ['case_number', 'court', 'plaintiff', 'defendant']
+        fields = ['number', 'court', 'card', 'plaintiff', 'defendant']
