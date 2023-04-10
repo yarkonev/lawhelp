@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Case
 from .forms import CaseForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'core/index.html')
 
 
 def cases(request):
