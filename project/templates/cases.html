@@ -1,0 +1,10 @@
+<h1>Судебные дела</h1>
+  <ul>
+    {% for case in cases %}
+    <li>
+        <h3><a href="{% url 'core:case' case.id %}">{{ case }}</a></h3>
+    </li>
+    {% empty %}
+    <li><h3>Судебные дела отсутствуют.</h3></li>
+    {% endfor %}
+</ul>
