@@ -4,3 +4,7 @@
 <p>Суд: {{ case.court }}</p>
 <p>Истец: {{ case.plaintiff }}</p>
 <p>Ответчик: {{ case.defendant }}</p>
+<p>ID: {{ case.id }}</p>
+
+
+<a href="{% url 'core:create_docx' case.id %}">Создать документ</a>
