@@ -1,5 +1,5 @@
 from django import forms
-from .models import Case
+from .models import Case, Plaintiff, Defendant
 
 
 class CaseForm(forms.ModelForm):
@@ -11,4 +11,16 @@ class CaseForm(forms.ModelForm):
                   'card': 'Карточка дела',
                   'plaintiff': 'Истец',
                   'defendant': 'Ответчик',
+                  }
+
+
+class PlaintiffForm(forms.ModelForm):
+    class Meta:
+        model = Plaintiff
+        fields = ['full_name', 'short_name', 'ogrn', 'inn', 'address']
+        labels = {'full_name': 'Полное наименование',
+                  'short_name': 'Краткое наименование',
+                  'ogrn': 'ОГРН',
+                  'inn': 'ИНН',
+                  'address': 'Адрес',
                   }
