@@ -30,6 +30,7 @@ class Defendant(LegalEntity):
 
 class Court(models.Model):
     name = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=6)
     address = models.TextField(max_length=200)
 
     def __str__(self):
@@ -38,11 +39,13 @@ class Court(models.Model):
 
 class Case(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    number = models.CharField(max_length=30)
+    number = models.CharField(max_length=30, blank=True)
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
     card = models.URLField(max_length=200, blank=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
+    overall_charge = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+    gp_charge = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
     def __str__(self):
-        return self.number
+        return f"{self.plaintiff.short_name} - {self.defendant.short_name}"
