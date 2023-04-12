@@ -78,6 +78,25 @@ def new_case(request):
     return render(request, 'core/new_case.html', context)
 
 
+def edit_case(request, case_id):
+    case = Case.objects.get(id=case_id)
+
+    if request.method != 'POST':
+        form = CaseForm(instance=case)
+    else:
+        form = CaseForm(instance=case, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('core:case', case_id=case.id)
+
+    context = {
+        'case': case,
+        'form': form,
+    }
+
+    return render(request, 'core/edit_case.html', context)
+
+
 def create_docx(request, case_id):
     # Retrieve data from models
     case = Case.objects.get(id=case_id)
