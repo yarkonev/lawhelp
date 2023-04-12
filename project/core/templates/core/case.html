@@ -1,10 +1,17 @@
 <h1>Судебное дело</h1>
 
-<p>Номер дела: {{ case.number }}</p>
+<p>Номер дела:
+    {% if case.card %}
+        <a href="{{ case.card }}" target="_blank">{{ case.number }}</a>
+    {% else %}
+        {{ case.number }}
+    {% endif %}
+</p>
 <p>Суд: {{ case.court }}</p>
 <p>Истец: {{ case.plaintiff }}</p>
 <p>Ответчик: {{ case.defendant }}</p>
-<p>ID: {{ case.id }}</p>
+<p>Цена иска: {{ case.overall_charge }}</p>
+<p>Госпошлина: {{ case.gp_charge }}</p>
 
 <p>
     <a href="{% url 'core:create_docx' case.id %}">Создать документ</a>
