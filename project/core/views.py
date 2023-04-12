@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.conf import settings
 from .models import Case
-from .forms import CaseForm, PlaintiffForm
+from .forms import CaseForm, PlaintiffForm, DefendantForm
 from docxtpl import DocxTemplate
 import io
 import os
@@ -43,6 +43,23 @@ def new_plaintiff(request):
     }
 
     return render(request, 'core/new_plaintiff.html', context)
+
+
+def new_defendant(request):
+    if request.method != 'POST':
+        form = DefendantForm()
+    else:
+        form = DefendantForm(data=request.POST)
+        if form.is_valid():
+            new_defendant = form.save(commit=False)
+            new_defendant.save()
+            return redirect('core:cases')
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'core/new_defendant.html', context)
 
 
 def new_case(request):

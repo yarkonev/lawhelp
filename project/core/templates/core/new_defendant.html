@@ -1,0 +1,7 @@
+<h2>Добавить нового ответчика:</h2>
+
+<form method="post" action="{% url 'core:new_defendant' %}" class="form">
+{% csrf_token %}
+{{ form.as_p }}
+    <button name="submit" class="btn btn-primary">Добавить ответчика</button>
+</form>

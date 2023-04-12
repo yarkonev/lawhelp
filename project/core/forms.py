@@ -24,3 +24,15 @@ class PlaintiffForm(forms.ModelForm):
                   'inn': 'ИНН',
                   'address': 'Адрес',
                   }
+
+
+class DefendantForm(forms.ModelForm):
+    class Meta:
+        model = Defendant
+        fields = ['full_name', 'short_name', 'ogrn', 'inn', 'address']
+        labels = {'full_name': 'Полное наименование',
+                  'short_name': 'Краткое наименование',
+                  'ogrn': 'ОГРН',
+                  'inn': 'ИНН',
+                  'address': 'Адрес',
+                  }
