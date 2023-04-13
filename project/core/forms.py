@@ -1,5 +1,6 @@
 from django import forms
-from .models import Case, Plaintiff, Defendant
+
+from .models import Case, Defendant, Plaintiff
 
 
 class CaseForm(forms.ModelForm):

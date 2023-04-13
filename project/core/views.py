@@ -1,11 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from django.conf import settings
-from .models import Case
-from .forms import CaseForm, PlaintiffForm, DefendantForm
-from docxtpl import DocxTemplate
 import io
 import os
+
+from django.conf import settings
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from docxtpl import DocxTemplate
+
+from .forms import CaseForm, DefendantForm, PlaintiffForm
+from .models import Case
+from .services import count_court_fee
 
 
 def index(request):
@@ -69,9 +72,11 @@ def new_case(request):
         form = CaseForm(data=request.POST)
         if form.is_valid():
             new_case = form.save(commit=False)
+            if not new_case.gp_charge:
+                new_case.gp_charge = count_court_fee(new_case.overall_charge)
             new_case.save()
             return redirect('core:cases')
-    
+
     context = {
         'form': form,
     }
@@ -102,7 +107,8 @@ def create_docx(request, case_id):
     case = Case.objects.get(id=case_id)
 
     # Open template document
-    document = DocxTemplate(os.path.join(settings.STATICFILES_DIRS[0], 'docx_templates/test_template.docx'))
+    document = DocxTemplate(os.path.join(settings.STATICFILES_DIRS[0],
+                                         'docx_templates/test_template.docx'))
 
     # Update template with data
     context = {
