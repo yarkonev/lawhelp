@@ -1,13 +1,12 @@
 from django.db import models
-
 import uuid
 
 
 class LegalEntity(models.Model):
     full_name = models.CharField(max_length=100)
     short_name = models.CharField(max_length=30)
-    ogrn = models.CharField(max_length=13)
-    inn = models.CharField(max_length=11)
+    ogrn = models.CharField(max_length=13, unique=True)
+    inn = models.CharField(max_length=11, unique=True)
     address = models.TextField(max_length=200)
 
     class Meta:

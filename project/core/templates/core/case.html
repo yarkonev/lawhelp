@@ -11,7 +11,9 @@
 <p>
     Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.id %}">{{ case.plaintiff }}</a>
 </p>
-<p>Ответчик: {{ case.defendant }}</p>
+<p>
+    Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.id %}">{{ case.defendant }}</a>
+</p>
 <p>Цена иска: {{ case.overall_charge }}</p>
 <p>Госпошлина: {{ case.gp_charge }}</p>
 
