@@ -1,4 +1,4 @@
-<h1>Судебное дело</h1>
+<h2>Судебное дело</h2>
 
 <p>Номер дела:
     {% if case.card %}
@@ -8,7 +8,9 @@
     {% endif %}
 </p>
 <p>Суд: {{ case.court }}</p>
-<p>Истец: {{ case.plaintiff }}</p>
+<p>
+    Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.id %}">{{ case.plaintiff }}</a>
+</p>
 <p>Ответчик: {{ case.defendant }}</p>
 <p>Цена иска: {{ case.overall_charge }}</p>
 <p>Госпошлина: {{ case.gp_charge }}</p>

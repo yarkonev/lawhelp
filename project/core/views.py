@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.conf import settings
-from .models import Case
+from .models import Case, Plaintiff
 from .forms import CaseForm, PlaintiffForm, DefendantForm
 from docxtpl import DocxTemplate
 import io
@@ -24,6 +24,12 @@ def case(request, case_id):
     case = get_object_or_404(Case, pk=case_id)
     context = {
         'case': case,
+        'plaintiff': case.plaintiff,
+        'defendant': case.defendant,
+        'court': case.court,
+        'number': case.number,
+        'overall_charge': case.overall_charge,
+        'gp_charge': case.gp_charge,
     }
     return render(request, 'core/case.html', context)
 
@@ -95,6 +101,14 @@ def edit_case(request, case_id):
     }
 
     return render(request, 'core/edit_case.html', context)
+
+
+def plaintiff_detail(request, plaintiff_id):
+    plaintiff = get_object_or_404(Plaintiff, id=plaintiff_id)
+    context = {
+        'plaintiff': plaintiff,
+    }
+    return render(request, 'core/plaintiff_detail.html', context)
 
 
 def create_docx(request, case_id):
