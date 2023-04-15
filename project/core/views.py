@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from django.conf import settings
 from .models import Case, Plaintiff, Defendant
 from .forms import CaseForm, PlaintiffForm, DefendantForm
-from docxtpl import DocxTemplate
-import io
-import os
+from core.make_doc import *
 
 
 def index(request):
@@ -119,29 +115,6 @@ def defendant_detail(request, defendant_id):
     return render(request, 'core/defendant_detail.html', context)
 
 
-def create_docx(request, case_id):
-    # Retrieve data from models
+def make_petition_view(request, case_id):
     case = Case.objects.get(id=case_id)
-
-    # Open template document
-    document = DocxTemplate(os.path.join(settings.STATICFILES_DIRS[0], 'docx_templates/test_template.docx'))
-
-    # Update template with data
-    context = {
-        'court_name': case.court.name,
-        'defendant_name': case.defendant.short_name,
-        'defendant_inn': case.defendant.inn,
-    }
-
-    document.render(context, autoescape=True)
-
-    # Create a file-like buffer to receive .docx data.
-    buffer = io.BytesIO()
-    document.save(buffer)
-    buffer.seek(0)
-
-    # Send the document as a response
-    response = HttpResponse(buffer.read(),
-                            content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    response['Content-Disposition'] = 'attachment; filename=my_document.docx'
-    return response
+    return make_petition(case)

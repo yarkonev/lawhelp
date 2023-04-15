@@ -18,7 +18,7 @@
 <p>Госпошлина: {{ case.gp_charge }}</p>
 
 <p>
-    <a href="{% url 'core:create_docx' case.id %}">Создать документ</a>
+    <a href="{% url 'core:make_petition_view' case.id %}">Создать документ</a>
 </p>
 <p>
     <a href="{% url 'core:edit_case' case.id %}">Редактировать дело</a>
