@@ -1,5 +1,6 @@
 import os
 import io
+
 from django.conf import settings
 from django.http import HttpResponse
 from docxtpl import DocxTemplate
@@ -32,5 +33,5 @@ def make_petition(case):
     # Send the document as a response
     response = HttpResponse(buffer.read(),
                             content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    response['Content-Disposition'] = 'attachment; filename=my_document.docx'
+    response['Content-Disposition'] = 'attachment; filename=petition.docx'
     return response

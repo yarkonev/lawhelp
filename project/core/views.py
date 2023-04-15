@@ -1,11 +1,9 @@
-from django.conf import settings
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from docxtpl import DocxTemplate
 
 from .forms import CaseForm, DefendantForm, PlaintiffForm
-from .models import Case
+from .models import Case, Defendant, Plaintiff
 from .services import count_court_fee
+from .make_doc import *
 
 
 def index(request):
