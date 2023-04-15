@@ -1,4 +1,4 @@
-<h1>Судебное дело</h1>
+<h2>Судебное дело</h2>
 
 <p>Номер дела:
     {% if case.card %}
@@ -8,13 +8,17 @@
     {% endif %}
 </p>
 <p>Суд: {{ case.court }}</p>
-<p>Истец: {{ case.plaintiff }}</p>
-<p>Ответчик: {{ case.defendant }}</p>
+<p>
+    Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.id %}">{{ case.plaintiff }}</a>
+</p>
+<p>
+    Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.id %}">{{ case.defendant }}</a>
+</p>
 <p>Цена иска: {{ case.overall_charge }}</p>
 <p>Госпошлина: {{ case.gp_charge }}</p>
 
 <p>
-    <a href="{% url 'core:create_docx' case.id %}">Создать документ</a>
+    <a href="{% url 'core:make_petition_view' case.id %}">Создать документ</a>
 </p>
 <p>
     <a href="{% url 'core:edit_case' case.id %}">Редактировать дело</a>
