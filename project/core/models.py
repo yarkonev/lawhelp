@@ -39,9 +39,9 @@ class Court(models.Model):
 
 class Case(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    number = models.CharField(max_length=30, blank=True)
+    number = models.CharField(max_length=30, blank=True, unique=True)
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
-    card = models.URLField(max_length=200, blank=True)
+    card = models.URLField(max_length=200, blank=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
     overall_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)

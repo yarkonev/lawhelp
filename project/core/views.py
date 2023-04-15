@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.conf import settings
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from docxtpl import DocxTemplate
 
-from .models import Case, Plaintiff, Defendant
-from .forms import CaseForm, PlaintiffForm, DefendantForm
-from .make_doc import make_petition
+from .forms import CaseForm, DefendantForm, PlaintiffForm
+from .models import Case
+from .services import count_court_fee
 
 
 def index(request):
@@ -72,9 +75,11 @@ def new_case(request):
         form = CaseForm(data=request.POST)
         if form.is_valid():
             new_case = form.save(commit=False)
+            if not new_case.gp_charge:
+                new_case.gp_charge = count_court_fee(new_case.overall_charge)
             new_case.save()
             return redirect('core:cases')
-    
+
     context = {
         'form': form,
     }
