@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import Case, Plaintiff, Defendant
 from .forms import CaseForm, PlaintiffForm, DefendantForm
-from core.make_doc import *
+from .make_doc import make_petition
 
 
 def index(request):
