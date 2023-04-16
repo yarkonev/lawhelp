@@ -15,14 +15,22 @@ class LegalEntity(models.Model):
 
 
 class Plaintiff(LegalEntity):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
 
     def __str__(self):
         return self.short_name
 
 
 class Defendant(LegalEntity):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
 
     def __str__(self):
         return self.short_name
@@ -30,7 +38,7 @@ class Defendant(LegalEntity):
 
 class Court(models.Model):
     name = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=6, blank=True)
+    zip_code = models.CharField(max_length=6)
     address = models.TextField(max_length=200)
 
     def __str__(self):
@@ -38,10 +46,22 @@ class Court(models.Model):
 
 
 class Case(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    number = models.CharField(max_length=30, blank=True, unique=True)
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    number = models.CharField(
+        max_length=30,
+        blank=True,
+        unique=True
+    )
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
-    card = models.URLField(max_length=200, blank=True, unique=True)
+    card = models.URLField(
+        max_length=200,
+        blank=True,
+        unique=True
+    )
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
     overall_charge = models.DecimalField(
@@ -49,7 +69,16 @@ class Case(models.Model):
         decimal_places=2,
         default=0
     )
-    gp_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    gp_charge = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0
+    )
+    
+    class Meta:
+        unique_together = (
+            'court', 'id'
+        )
 
     def __str__(self):
         return f"{self.plaintiff.short_name} - {self.defendant.short_name}"
