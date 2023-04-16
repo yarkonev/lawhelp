@@ -44,7 +44,11 @@ class Case(models.Model):
     card = models.URLField(max_length=200, blank=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
-    overall_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    overall_charge = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0
+    )
     gp_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
