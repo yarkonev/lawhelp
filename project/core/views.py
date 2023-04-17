@@ -25,6 +25,7 @@ def case(request, case_id):
         'plaintiff': case.plaintiff,
         'defendant': case.defendant,
         'court': case.court,
+        'appeals_court': case.appeals_court,
         'number': case.number,
         'overall_charge': case.overall_charge,
         'gp_charge': case.gp_charge,
