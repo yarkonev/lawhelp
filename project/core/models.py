@@ -4,7 +4,7 @@ from django.db import models
 
 
 class LegalEntity(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    firm_id = models.UUIDField(default=uuid.uuid4, editable=False)
     full_name = models.CharField(max_length=100)
     short_name = models.CharField(max_length=30)
     ogrn = models.CharField(max_length=13, unique=True)
@@ -16,12 +16,12 @@ class LegalEntity(models.Model):
         
 
 class LegalInstitution(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    court_id = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=6)
     address = models.TextField(max_length=200)
-    account = models.TextField(max_length=500, blank=True)
-    relevant_on = models.DateField(blank=True)
+    account = models.TextField(max_length=500, null=True, blank=True)
+    relevant_on = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -48,13 +48,16 @@ class AppealsCourt(LegalInstitution):
     
     
 class Region(models.Model):
-    region_id = models.CharField(max_length=2)
-    region_name = models.TextField(max_length=100)
+    reg_id = models.CharField(max_length=2)
+    reg_name = models.TextField(max_length=100)
     compensation = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    
+    def __str__(self):
+        return self.region_name
     
 
 class Case(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    case_id = models.UUIDField(default=uuid.uuid4, editable=False)
     number = models.CharField(max_length=30, blank=True, unique=True)
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
     appeals_court = models.ForeignKey(AppealsCourt, on_delete=models.CASCADE, blank=True)
@@ -66,7 +69,7 @@ class Case(models.Model):
 
     class Meta:
         unique_together = (
-            'court', 'id'
+            'court', 'case_id'
         )
 
     def __str__(self):
