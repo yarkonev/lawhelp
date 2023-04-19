@@ -1,13 +1,12 @@
 from django.contrib import admin
 
-from .models import Case, Court, AppealsCourt, Defendant, Plaintiff, Region
+from .models import Case, Court, AppealsCourt, Defendant, Plaintiff
 
 
 admin.site.register(Plaintiff)
 admin.site.register(Defendant)
 admin.site.register(Court)
 admin.site.register(AppealsCourt)
-admin.site.register(Region)
 
 
 @admin.register(Case)

@@ -22,6 +22,9 @@ class LegalInstitution(models.Model):
     address = models.TextField(max_length=200)
     account = models.TextField(max_length=500, null=True, blank=True)
     relevant_on = models.CharField(max_length=50, null=True, blank=True)
+    reg_id = models.CharField(max_length=2)
+    reg_name = models.TextField(max_length=100)
+    compensation = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     class Meta:
         abstract = True
@@ -45,15 +48,6 @@ class Court(LegalInstitution):
 class AppealsCourt(LegalInstitution):
     def __str__(self):
         return self.name
-    
-    
-class Region(models.Model):
-    reg_id = models.CharField(max_length=2)
-    reg_name = models.TextField(max_length=100)
-    compensation = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    
-    def __str__(self):
-        return self.region_name
     
 
 class Case(models.Model):
