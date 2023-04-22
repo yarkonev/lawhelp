@@ -13,7 +13,7 @@ class LegalEntity(models.Model):
 
     class Meta:
         abstract = True
-        
+
 
 class LegalInstitution(models.Model):
     court_id = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -24,7 +24,9 @@ class LegalInstitution(models.Model):
     relevant_on = models.CharField(max_length=50, null=True, blank=True)
     reg_id = models.CharField(max_length=2)
     reg_name = models.TextField(max_length=100)
-    compensation = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    compensation = models.DecimalField(max_digits=10,
+                                       decimal_places=2,
+                                       default=0)
 
     class Meta:
         abstract = True
@@ -43,22 +45,24 @@ class Defendant(LegalEntity):
 class Court(LegalInstitution):
     def __str__(self):
         return self.name
-    
-    
+
+
 class AppealsCourt(LegalInstitution):
     def __str__(self):
         return self.name
-    
+
 
 class Case(models.Model):
     case_id = models.UUIDField(default=uuid.uuid4, editable=False)
     number = models.CharField(max_length=30, blank=True, unique=True)
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
-    appeals_court = models.ForeignKey(AppealsCourt, on_delete=models.CASCADE, blank=True)
+    appeals_court = models.ForeignKey(AppealsCourt,
+                                      on_delete=models.CASCADE, blank=True)
     card = models.URLField(max_length=200, blank=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
-    overall_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    overall_charge = models.DecimalField(max_digits=10,
+                                         decimal_places=2, default=0)
     gp_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     class Meta:
