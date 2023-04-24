@@ -8,19 +8,23 @@
     {% endif %}
 </p>
 <p>Суд: {{ case.court }}</p>
+<p>Апелляционный суд:
+    {% if case.appeals_court %}
+        {{ case.appeals_court }}
+    {% endif %}
 <p>
-    Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.id %}">{{ case.plaintiff }}</a>
+    Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.firm_id %}">{{ case.plaintiff }}</a>
 </p>
 <p>
-    Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.id %}">{{ case.defendant }}</a>
+    Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
 </p>
 <p>Цена иска: {{ case.overall_charge }}</p>
 <p>Госпошлина: {{ case.gp_charge }}</p>
 
 <p>
-    <a href="{% url 'core:make_petition_view' case.id %}">Создать ходатайство</a>
+    <a href="{% url 'core:make_petition_view' case.case_id %}">Создать ходатайство</a>
 </p>
 <p>
-    <a href="{% url 'core:edit_case' case.id %}">Редактировать дело</a>
+    <a href="{% url 'core:edit_case' case.case_id %}">Редактировать дело</a>
 </p>
 

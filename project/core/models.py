@@ -99,8 +99,8 @@ class Case(models.Model):
         max_length=30, blank=True, null=True, unique=True
     )
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
-    appeals_court = models.ForeignKey(AppealsCourt,
-                                      on_delete=models.CASCADE, blank=True)
+    appeals_court = models.ForeignKey(AppealsCourt, on_delete=models.CASCADE,
+                                      blank=True, null=True)
     card = models.URLField(max_length=200, blank=True, null=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
@@ -109,6 +109,8 @@ class Case(models.Model):
     gp_charge = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     class Meta:
+        verbose_name = 'Дело'
+        verbose_name_plural = 'Дела'
         constraints = [
             models.UniqueConstraint(
                 fields=['court', 'case_id'],

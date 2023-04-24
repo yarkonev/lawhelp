@@ -43,7 +43,7 @@ def case(request, case_id):
     Raises:
     - Http404: If the case with the given id does not exist.
     """
-    case = get_object_or_404(Case, pk=case_id)
+    case = get_object_or_404(Case, case_id=case_id)
     context = {
         'case': case,
         'plaintiff': case.plaintiff,
@@ -173,7 +173,7 @@ def edit_case(request, case_id):
     or a redirect to the Case object's detail view if the changes were saved
     successfully.
     """
-    case = Case.objects.get(id=case_id)
+    case = Case.objects.get(case_id=case_id)
 
     if request.method != 'POST':
         form = CaseForm(instance=case)
@@ -181,7 +181,7 @@ def edit_case(request, case_id):
         form = CaseForm(instance=case, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('core:case', case_id=case.id)
+            return redirect('core:case', case_id=case_id)
 
     context = {
         'case': case,
@@ -206,7 +206,7 @@ def plaintiff_detail(request, plaintiff_id):
     Raises:
     - Http404: If no defendant exists with the given ID.
     """
-    plaintiff = get_object_or_404(Plaintiff, id=plaintiff_id)
+    plaintiff = get_object_or_404(Plaintiff, firm_id=plaintiff_id)
     context = {
         'plaintiff': plaintiff,
     }
@@ -227,7 +227,7 @@ def defendant_detail(request, defendant_id):
     Raises:
     - Http404: If no defendant exists with the given ID.
     """
-    defendant = get_object_or_404(Defendant, id=defendant_id)
+    defendant = get_object_or_404(Defendant, firm_id=defendant_id)
     context = {
         'defendant': defendant,
     }
@@ -245,5 +245,5 @@ def make_petition_view(request, case_id):
     Returns:
     - HttpResponse: A response containing the generated petition as docx file.
     """
-    case = Case.objects.get(id=case_id)
+    case = Case.objects.get(case_id=case_id)
     return make_petition(case)

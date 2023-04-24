@@ -1,10 +1,10 @@
 <h2>Редактировать дело:</h2>
 
 <p>
-    <a href="{% url 'core:case' case.id %}">{{ case }}</a>
+    <a href="{% url 'core:case' case.case_id %}">{{ case }}</a>
 </p>
 
-<form method="post" action="{% url 'core:edit_case' case.id %}" class="form">
+<form method="post" action="{% url 'core:edit_case' case.case_id %}" class="form">
     {% csrf_token %}
     {{ form.as_p }}
     <button name="submit" class="btn btn-primary">Сохранить изменения</button>

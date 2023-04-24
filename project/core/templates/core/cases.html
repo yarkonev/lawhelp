@@ -2,7 +2,7 @@
   <ul>
     {% for case in cases %}
     <li>
-      <a href="{% url 'core:case' case.id %}">{{ case }}</a>
+      <a href="{% url 'core:case' case.case_id %}">{{ case }}</a>
     </li>
     {% empty %}
     <li>Судебные дела отсутствуют.</li>
