@@ -17,7 +17,7 @@ class LegalEntity(models.Model):
 
     class Meta:
         abstract = True
-        # checks that the OGRN and INN fields matches a specific regex pattern
+        # Checks that the OGRN and INN fields matches a specific regex pattern
         # for legal entity identification numbers in Russia.
         constraints = [
             models.CheckConstraint(
