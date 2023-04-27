@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 
 
@@ -138,3 +139,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Using custom user model
 AUTH_USER_MODEL = "users.CustomUser"
+
+LOGIN_REDIRECT_URL = "core:cases"
+LOGOUT_REDIRECT_URL = "core:index"
+
+# Language settings
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+]
+
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
