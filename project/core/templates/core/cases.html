@@ -18,3 +18,12 @@
 <p>
 <a href="{% url 'core:new_defendant' %}">Добавить нового ответчика</a>
 </p>
+
+
+{% if user.is_authenticated %}
+  Привет {{ user.email }}!
+  <p><a href="{% url 'users:logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'users:login' %}">Log In</a>
+{% endif %}

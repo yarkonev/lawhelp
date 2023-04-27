@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .forms import CaseForm, DefendantForm, PlaintiffForm
 from .make_doc import make_petition
@@ -10,6 +11,7 @@ def index(request):
     return render(request, 'core/index.html')
 
 
+@login_required
 def cases(request):
     """
     View function that retrieves all Case objects from the database and renders
@@ -29,6 +31,7 @@ def cases(request):
     return render(request, 'core/cases.html', context)
 
 
+@login_required
 def case(request, case_id):
     """
     Renders the detail view of a legal case identified by its primary key.
@@ -57,6 +60,7 @@ def case(request, case_id):
     return render(request, 'core/case.html', context)
 
 
+@login_required
 def new_plaintiff(request):
     """
     View function for creating a new plaintiff.
@@ -93,6 +97,7 @@ def new_plaintiff(request):
     return render(request, 'core/new_plaintiff.html', context)
 
 
+@login_required
 def new_defendant(request):
     """
     This function creates a new defendant object
@@ -126,6 +131,7 @@ def new_defendant(request):
     return render(request, 'core/new_defendant.html', context)
 
 
+@login_required
 def new_case(request):
     """
     Create a new case from a POST request or display an empty case form.
@@ -159,6 +165,7 @@ def new_case(request):
     return render(request, 'core/new_case.html', context)
 
 
+@login_required
 def edit_case(request, case_id):
     """
     Renders a form to edit a Case object identified by `case_id`, or saves the
@@ -191,6 +198,7 @@ def edit_case(request, case_id):
     return render(request, 'core/edit_case.html', context)
 
 
+@login_required
 def plaintiff_detail(request, plaintiff_id):
     """
     Render a defendant's detail page based on their id.
@@ -213,6 +221,7 @@ def plaintiff_detail(request, plaintiff_id):
     return render(request, 'core/plaintiff_detail.html', context)
 
 
+@login_required
 def defendant_detail(request, defendant_id):
     """
     Render the detail page for the defendant with the given ID.
@@ -234,6 +243,7 @@ def defendant_detail(request, defendant_id):
     return render(request, 'core/defendant_detail.html', context)
 
 
+@login_required
 def make_petition_view(request, case_id):
     """
     View function that generates a petition for a given case.

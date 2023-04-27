@@ -140,8 +140,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Using custom user model
 AUTH_USER_MODEL = "users.CustomUser"
 
-LOGIN_REDIRECT_URL = "core:cases"
-LOGOUT_REDIRECT_URL = "core:index"
+LOGIN_URL = 'users:login'
+LOGOUT_URL = 'users:logout'
 
 # Language settings
 LANGUAGES = [
