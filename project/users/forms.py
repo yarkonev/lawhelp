@@ -7,6 +7,10 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(error_messages={
+        'unique': 'Аккаунт с такой почтой уже зарегистрирован.'
+        })
+
     class Meta:
         model = CustomUser
         fields = ('email', 'password1', 'password2')

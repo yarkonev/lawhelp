@@ -72,5 +72,5 @@ class SignupViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
-            'Custom user with this Email address already exists.'
+            'Аккаунт с такой почтой уже зарегистрирован.'
             )
