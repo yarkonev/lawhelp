@@ -9,7 +9,7 @@ from .forms import CustomUserCreationForm, LoginForm
 class SignupView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('core:cases')
-    template_name = 'users/signup.html'
+    template_name = 'users/sign-up.html'
 
     def form_valid(self, form):
         """
@@ -32,8 +32,8 @@ class SignupView(CreateView):
 
 class CustomLoginView(LoginView):
     authentication_form = LoginForm
-    template_name = 'users/login.html'
+    template_name = 'users/sign-in.html'
 
 
 class CustomLogoutView(LogoutView):
-    template_name = 'users/logged_out.html'
+    template_name = 'core/index.html'
