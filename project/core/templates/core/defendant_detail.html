@@ -1,8 +1,13 @@
-<h2>Ответчик</h2>
+{% extends 'core/base.html' %}
 
-<p>Полное наименование: {{ defendant.full_name }}</p>
-<p>Краткое наименование: {{ defendant.short_name }}</p>
-<p>ОГРН: {{ defendant.ogrn }}</p>
-<p>ИНН: {{ defendant.inn }}</p>
-<p>Адрес: {{ defendant.address }}</p>
+{% block page_header%}
+    <h2>Ответчик</h2>
+{% endblock page_header%}
 
+{% block content %}
+    <p>Полное наименование: {{ defendant.full_name }}</p>
+    <p>Краткое наименование: {{ defendant.short_name }}</p>
+    <p>ОГРН: {{ defendant.ogrn }}</p>
+    <p>ИНН: {{ defendant.inn }}</p>
+    <p>Адрес: {{ defendant.address }}</p>
+{% endblock content %}

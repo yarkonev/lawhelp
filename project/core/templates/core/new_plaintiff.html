@@ -1,7 +1,13 @@
-<h2>Добавить нового истца:</h2>
+{% extends 'core/base.html' %}
 
-<form method="post" action="{% url 'core:new_plaintiff' %}" class="form">
-{% csrf_token %}
-{{ form.as_p }}
-    <button name="submit" class="btn btn-primary">Добавить истца</button>
-</form>
+{% block page_header%}
+    <h2>Добавить нового истца:</h2>
+{% endblock page_header%}
+
+{% block content %}
+    <form method="post" action="{% url 'core:new_plaintiff' %}" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <button name="submit" class="btn btn-primary">Добавить истца</button>
+    </form>
+{% endblock content %}
