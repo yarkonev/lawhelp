@@ -9,7 +9,10 @@ from docxtpl import DocxTemplate
 def make_petition(case):
 
     # Open template document
-    document = DocxTemplate(os.path.join(settings.STATICFILES_DIRS[0], 'docx_templates/template_petition.docx'))
+    document = DocxTemplate(os.path.join(
+        settings.STATICFILES_DIRS[0],
+        'docx_templates/template_petition.docx')
+        )
 
     # Update template with data
     context = {
