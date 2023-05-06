@@ -1,6 +1,11 @@
-<h2>Регистрация</h2>
-<form method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">Зарегистрироваться</button>
-</form>
+{% extends 'base.html' %}
+
+{% block page_header %}Регистрация{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}

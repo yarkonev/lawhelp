@@ -1,6 +1,11 @@
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+{% extends 'base.html' %}
+
+{% block page_header %}Вход в личный кабинет{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+  </form>
+{% endblock %}
