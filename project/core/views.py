@@ -8,7 +8,7 @@ from .services import count_court_fee
 
 
 def index(request):
-    return render(request, 'core/index.html')
+    return render(request, 'home/index.html')
 
 
 @login_required
