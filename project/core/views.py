@@ -66,6 +66,26 @@ def case(request, case_id):
 
 
 @login_required
+def plaintiffs(request):
+    """
+    View function that retrieves all Case objects from the database and renders
+    them using the 'core/cases.html' template.
+
+    Args:
+    - request (HttpRequest): The HTTP request object.
+
+    Returns:
+    - HttpResponse: The HTTP response object that contains the rendered
+    template with the retrieved Case objects.
+    """
+    plaintiffs = Plaintiff.objects.all()
+    context = {
+        'plaintiffs': plaintiffs,
+    }
+    return render(request, 'core/plaintiffs.html', context)
+
+
+@login_required
 def new_plaintiff(request):
     """
     View function for creating a new plaintiff.
