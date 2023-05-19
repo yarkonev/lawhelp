@@ -14,6 +14,6 @@ class CaseAdmin(admin.ModelAdmin):
     list_display = (
         'number', 'court', 'appeals_court', 'card',
         'plaintiff', 'defendant',
-        'overall_charge', 'gp_charge'
+        'claim_price', 'gp_charge'
     )
     

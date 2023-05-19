@@ -59,7 +59,7 @@ def case(request, case_id):
         'court': case.court,
         'appeals_court': case.appeals_court,
         'number': case.number,
-        'overall_charge': case.overall_charge,
+        'claim_price': case.claim_price,
         'gp_charge': case.gp_charge,
     }
     return render(request, 'core/case.html', context)
@@ -144,7 +144,7 @@ def new_case(request):
     an empty case form.
     If the request is a POST request, validate the form data and
     create a new case.
-    If the new case has no GP charge, calculate it based on the overall charge.
+    If the new case has no GP charge, calculate it based on the claim price.
     Redirect to the list of cases after creating the new case.
 
     Args:
@@ -160,7 +160,7 @@ def new_case(request):
         if form.is_valid():
             new_case = form.save(commit=False)
             if not new_case.gp_charge:
-                new_case.gp_charge = count_court_fee(new_case.overall_charge)
+                new_case.gp_charge = count_court_fee(new_case.claim_price)
             new_case.save()
             return redirect('core:cases')
 

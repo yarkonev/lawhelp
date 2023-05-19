@@ -1,14 +1,140 @@
-{% extends 'home/index.html' %}
+{% extends 'layouts/base.html' %}
 
-{% block page_header%}
-    <h2>Добавить новое дело:</h2>
-{% endblock page_header%}
+{% block title %} Maps {% endblock title %}
 
 {% block content %}
-    <form method="post" action="{% url 'core:new_case' %}" class="form">
-    {% csrf_token %}
-    {{ form.as_p }}
-        <button name="submit" class="btn btn-primary">Добавить дело</button>
-    </form>
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Google maps</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Maps</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Google maps</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a href="#" class="btn btn-sm btn-neutral">New</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Добавить дело</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form method="post" action="{% url 'core:new_case' %}">
+                {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.number.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.number }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.card.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.card }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.court.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.court }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.appeals_court.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.appeals_court }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.plaintiff.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.plaintiff }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.defendant.label_tag }}</label>
+                        <div class="form_control">
+                          {{ form.defendant }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.claim_price.label_tag}}</label>
+                        <div class="form_control">
+                          {{ form.claim_price }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label">{{ form.gp_charge.label_tag}}</label>
+                        <div class="form_control">
+                          {{ form.gp_charge }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <button name="submit" class="btn btn-sm btn-primary">Добавить дело</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+      
+    </div>
+
 {% endblock content %}
 
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+
+{% endblock javascripts %}

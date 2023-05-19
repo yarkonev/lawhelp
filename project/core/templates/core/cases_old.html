@@ -1,0 +1,31 @@
+{% extends 'home/index.html' %}
+
+
+{% block page_header%}
+  <h2>Судебные дела</h2>
+{% endblock page_header%}
+
+{% block content %}
+
+
+  <ul>
+    {% for case in cases %}
+    <li>
+      <a href="{% url 'core:case' case.case_id %}">{{ case }}</a>
+    </li>
+    {% empty %}
+    <li>Судебные дела отсутствуют.</li>
+    {% endfor %}
+  </ul>
+
+<p>
+  <a href="{% url 'core:new_case' %}">Добавить новое дело</a>
+</p>
+<p>
+<a href="{% url 'core:new_plaintiff' %}">Добавить нового истца</a>
+</p>
+<p>
+<a href="{% url 'core:new_defendant' %}">Добавить нового ответчика</a>
+</p>
+
+{% endblock content %}

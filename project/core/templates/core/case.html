@@ -23,7 +23,7 @@
     <p>
         Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
     </p>
-    <p>Цена иска: {{ case.overall_charge }}</p>
+    <p>Цена иска: {{ case.claim_price }}</p>
     <p>Госпошлина: {{ case.gp_charge }}</p>
 
     <p>

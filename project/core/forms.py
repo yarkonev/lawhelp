@@ -6,14 +6,17 @@ from .models import Case, Defendant, Plaintiff
 class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
-        fields = ['number', 'court', 'appeals_court', 'card', 'plaintiff', 'defendant', 'overall_charge', 'gp_charge']
+        fields = [
+            'number', 'court', 'appeals_court', 'card',
+            'plaintiff', 'defendant', 'claim_price', 'gp_charge'
+            ]
         labels = {'number': 'Номер дела',
                   'court': 'Суд',
                   'appeals_court': 'Апелляционный суд',
                   'card': 'Карточка дела',
                   'plaintiff': 'Истец',
                   'defendant': 'Ответчик',
-                  'overall_charge': 'Цена иска',
+                  'claim_price': 'Цена иска',
                   'gp_charge': 'Госпошлина',
                   }
 
