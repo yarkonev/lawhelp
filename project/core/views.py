@@ -12,6 +12,11 @@ def index(request):
 
 
 @login_required
+def home(request):
+    return render(request, 'home/home.html')
+
+
+@login_required
 def cases(request):
     """
     View function that retrieves all Case objects from the database and renders

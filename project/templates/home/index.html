@@ -17,8 +17,8 @@ Coded by www.creative-tim.com
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="static/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="static/assets/img/favicon.png">
   <title>
     Argon Design System by Creative Tim
   </title>
@@ -26,13 +26,13 @@ Coded by www.creative-tim.com
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-  <link href="/static/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="/static/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="static/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="static/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
-  <link href="/static/assets/css/font-awesome.css" rel="stylesheet" />
-  <link href="/static/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="static/assets/css/font-awesome.css" rel="stylesheet" />
+  <link href="static/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="/static/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+  <link href="static/assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
 </head>
 
 <body class="index-page">
@@ -40,7 +40,7 @@ Coded by www.creative-tim.com
   <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-white navbar-light position-sticky top-0 shadow py-2">
     <div class="container">
       <a class="navbar-brand mr-lg-5" href="./index.html">
-        <img src="/static/assets/img/brand/blue.png">
+        <img src="static/assets/img/brand/blue.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@ Coded by www.creative-tim.com
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="./index.html">
-                <img src="/static/assets/img/brand/blue.png">
+                <img src="static/assets/img/brand/blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -138,16 +138,13 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-outline-primary" href="https://www.creative-tim.com/builder/argon" target="_blank">
-              <span class="nav-link-inner--text">Online Builder</span>
+            <a class="btn btn-outline-primary" href="{% url 'users:login' %}">
+              <span class="nav-link-inner--text">Войти</span>
             </a>
           </li>
           <li class="nav-item d-none d-lg-block">
-            <a href="https://www.creative-tim.com/product/argon-design-system-pro?ref=ads-upgrade-pro" target="_blank" class="btn btn-primary btn-icon">
-              <span class="btn-inner--icon">
-                <i class="fa fa-shopping-cart"></i>
-              </span>
-              <span class="nav-link-inner--text">Upgrade to PRO</span>
+            <a href="{% url "users:register" %}" class="btn btn-primary btn-icon">
+              <span class="nav-link-inner--text">Зарегистрироваться</span>
             </a>
           </li>
         </ul>
@@ -174,21 +171,21 @@ Coded by www.creative-tim.com
           <div class="col px-0">
             <div class="row align-items-center justify-content-center">
               <div class="col-lg-6 text-center">
-                <img src="/static/assets/img/brand/white.png" style="width: 200px;" class="img-fluid">
+                <img src="static/assets/img/brand/white.png" style="width: 200px;" class="img-fluid">
                 <p class="lead text-white">A beautiful Design System for Bootstrap 4. It's Free and Open Source.</p>
                 <div class="btn-wrapper mt-5">
-                  <a href="{% url 'users:signup' %}" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                  <a href="https://www.creative-tim.com/product/argon-design-system" class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="ni ni-cloud-download-95"></i></span>
-                    <span class="btn-inner--text">Зарегистрироваться</span>
+                    <span class="btn-inner--text">Download HTML</span>
                   </a>
-                  <a href="{% url 'users:login' %}" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
+                  <a href="https://github.com/creativetimofficial/argon-design-system" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0" target="_blank">
                     <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
-                    <span class="btn-inner--text">Войти</span>
+                    <span class="btn-inner--text"><span class="text-warning">Star us</span> on Github</span>
                   </a>
                 </div>
                 <div class="mt-5">
                   <small class="font-weight-bold mb-0 mr-2 text-white">*proudly coded by</small>
-                  <img src="/static/assets/img/brand/creativetim-white-slim.png" style="height: 28px;">
+                  <img src="static/assets/img/brand/creativetim-white-slim.png" style="height: 28px;">
                 </div>
               </div>
             </div>
@@ -545,7 +542,7 @@ Coded by www.creative-tim.com
                         <div class="row">
                           <div class="col-6 collapse-brand">
                             <a href="./index.html">
-                              <img src="/static/assets/img/brand/blue.png">
+                              <img src="static/assets/img/brand/blue.png">
                             </a>
                           </div>
                           <div class="col-6 collapse-close">
@@ -594,7 +591,7 @@ Coded by www.creative-tim.com
                         <div class="row">
                           <div class="col-6 collapse-brand">
                             <a href="./index.html">
-                              <img src="/static/assets/img/brand/blue.png">
+                              <img src="static/assets/img/brand/blue.png">
                             </a>
                           </div>
                           <div class="col-6 collapse-close">
@@ -659,7 +656,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -711,7 +708,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -756,7 +753,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -808,7 +805,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -860,7 +857,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -906,7 +903,7 @@ Coded by www.creative-tim.com
               <div class="row">
                 <div class="col-6 collapse-brand">
                   <a href="./index.html">
-                    <img src="/static/assets/img/brand/blue.png">
+                    <img src="static/assets/img/brand/blue.png">
                   </a>
                 </div>
                 <div class="col-6 collapse-close">
@@ -1360,19 +1357,19 @@ Coded by www.creative-tim.com
       <div class="row">
         <div class="col-sm-3 col-6">
           <small class="d-block text-uppercase font-weight-bold mb-4">Image</small>
-          <img src="/static/assets/img/faces/team-1.jpg" alt="Rounded image" class="img-fluid rounded shadow" style="width: 150px;">
+          <img src="static/assets/img/faces/team-1.jpg" alt="Rounded image" class="img-fluid rounded shadow" style="width: 150px;">
         </div>
         <div class="col-sm-3 col-6">
           <small class="d-block text-uppercase font-weight-bold mb-4">Circle Image</small>
-          <img src="/static/assets/img/faces/team-2.jpg" alt="Circle image" class="img-fluid rounded-circle shadow" style="width: 150px;">
+          <img src="static/assets/img/faces/team-2.jpg" alt="Circle image" class="img-fluid rounded-circle shadow" style="width: 150px;">
         </div>
         <div class="col-sm-3 col-6 mt-5 mt-sm-0">
           <small class="d-block text-uppercase font-weight-bold mb-4">Raised</small>
-          <img src="/static/assets/img/faces/team-3.jpg" alt="Raised image" class="img-fluid rounded shadow-lg" style="width: 150px;">
+          <img src="static/assets/img/faces/team-3.jpg" alt="Raised image" class="img-fluid rounded shadow-lg" style="width: 150px;">
         </div>
         <div class="col-sm-3 col-6 mt-5 mt-sm-0">
           <small class="d-block text-uppercase font-weight-bold mb-4">Circle Raised</small>
-          <img src="/static/assets/img/faces/team-4.jpg" alt="Raised circle image" class="img-fluid rounded-circle shadow-lg" style="width: 150px;">
+          <img src="static/assets/img/faces/team-4.jpg" alt="Raised circle image" class="img-fluid rounded-circle shadow-lg" style="width: 150px;">
         </div>
       </div>
       <div class="row mt-5">
@@ -1380,35 +1377,35 @@ Coded by www.creative-tim.com
           <small class="d-block text-uppercase font-weight-bold mb-4">Avatar group</small>
           <div class="avatar-group">
             <a href="javascript:;" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-              <img alt="Image placeholder" src="/static/assets/img/faces/team-1.jpg">
+              <img alt="Image placeholder" src="static/assets/img/faces/team-1.jpg">
             </a>
             <a href="javascript:;" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-              <img alt="Image placeholder" src="/static/assets/img/faces/team-2.jpg">
+              <img alt="Image placeholder" src="static/assets/img/faces/team-2.jpg">
             </a>
             <a href="javascript:;" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-              <img alt="Image placeholder" src="/static/assets/img/faces/team-3.jpg">
+              <img alt="Image placeholder" src="static/assets/img/faces/team-3.jpg">
             </a>
             <a href="javascript:;" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-              <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+              <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-6">
           <small class="d-block text-uppercase font-weight-bold mb-4">Sizing</small>
           <a href="javascript:;" class="avatar avatar-xs rounded-circle">
-            <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+            <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
           </a>
           <a href="javascript:;" class="avatar avatar-sm rounded-circle">
-            <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+            <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
           </a>
           <a href="javascript:;" class="avatar rounded-circle">
-            <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+            <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
           </a>
           <a href="javascript:;" class="avatar avatar-lg rounded-circle">
-            <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+            <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
           </a>
           <a href="javascript:;" class="avatar avatar-xl rounded-circle">
-            <img alt="Image placeholder" src="/static/assets/img/faces/team-4.jpg">
+            <img alt="Image placeholder" src="static/assets/img/faces/team-4.jpg">
           </a>
         </div>
       </div>
@@ -1485,13 +1482,13 @@ Coded by www.creative-tim.com
                       <div class="btn-wrapper text-center">
                         <a href="javascript:;" class="btn btn-neutral btn-icon">
                           <span class="btn-inner--icon">
-                            <img src="/static/assets/img/icons/common/github.svg">
+                            <img src="static/assets/img/icons/common/github.svg">
                           </span>
                           <span class="btn-inner--text">Github</span>
                         </a>
                         <a href="javascript:;" class="btn btn-neutral btn-icon">
                           <span class="btn-inner--icon">
-                            <img src="/static/assets/img/icons/common/google.svg">
+                            <img src="static/assets/img/icons/common/google.svg">
                           </span>
                           <span class="btn-inner--text">Google</span>
                         </a>
@@ -1613,7 +1610,7 @@ Coded by www.creative-tim.com
       </div>
     </div>
   </div>
-  <div class="section" style="background-image: url('/static/assets/img/ill/1.svg');">
+  <div class="section" style="background-image: url('static/assets/img/ill/1.svg');">
     <div class="container py-md">
       <div class="row justify-content-between align-items-center">
         <div class="col-lg-6 mb-lg-auto">
@@ -1626,13 +1623,13 @@ Coded by www.creative-tim.com
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="img-fluid" src="/static/assets/img/theme/img-1-1200x1000.jpg" alt="First slide">
+                  <img class="img-fluid" src="static/assets/img/theme/img-1-1200x1000.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="img-fluid" src="/static/assets/img/theme/img-2-1200x1000.jpg" alt="Second slide">
+                  <img class="img-fluid" src="static/assets/img/theme/img-2-1200x1000.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="img-fluid" src="/static/assets/img/theme/img-1-1200x1000.jpg" alt="Third slide">
+                  <img class="img-fluid" src="static/assets/img/theme/img-1-1200x1000.jpg" alt="Third slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
@@ -1723,11 +1720,11 @@ Coded by www.creative-tim.com
                 <div class="text-muted text-center mb-3"><small>Sign in with</small></div>
                 <div class="btn-wrapper text-center">
                   <a href="#" class="btn btn-neutral btn-icon">
-                    <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/github.svg"></span>
+                    <span class="btn-inner--icon"><img src="static/assets/img/icons/common/github.svg"></span>
                     <span class="btn-inner--text">Github</span>
                   </a>
                   <a href="#" class="btn btn-neutral btn-icon">
-                    <span class="btn-inner--icon"><img src="/static/assets/img/icons/common/google.svg"></span>
+                    <span class="btn-inner--icon"><img src="static/assets/img/icons/common/google.svg"></span>
                     <span class="btn-inner--text">Google</span>
                   </a>
                 </div>
@@ -1829,14 +1826,14 @@ Coded by www.creative-tim.com
         <div class="col-md-6 mb-5 mb-md-0">
           <div class="card card-lift--hover shadow border-0">
             <a href="./examples/landing.html" title="Landing Page">
-              <img src="/static/assets/img/theme/landing.jpg" class="card-img">
+              <img src="static/assets/img/theme/landing.jpg" class="card-img">
             </a>
           </div>
         </div>
         <div class="col-md-6 mb-5 mb-lg-0">
           <div class="card card-lift--hover shadow border-0">
             <a href="./examples/profile.html" title="Profile Page">
-              <img src="/static/assets/img/theme/profile.jpg" class="card-img">
+              <img src="static/assets/img/theme/profile.jpg" class="card-img">
             </a>
           </div>
         </div>
@@ -1891,21 +1888,21 @@ Coded by www.creative-tim.com
   </footer>
   </div>
   <!--   Core JS Files   -->
-  <script src="/static/assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="/static/assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="/static/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <script src="/static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="static/assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="static/assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="static/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="/static/assets/js/plugins/bootstrap-switch.js"></script>
+  <script src="static/assets/js/plugins/bootstrap-switch.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="/static/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <script src="/static/assets/js/plugins/moment.min.js"></script>
-  <script src="/static/assets/js/plugins/datetimepicker.js" type="text/javascript"></script>
-  <script src="/static/assets/js/plugins/bootstrap-datepicker.min.js"></script>
+  <script src="static/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="static/assets/js/plugins/moment.min.js"></script>
+  <script src="static/assets/js/plugins/datetimepicker.js" type="text/javascript"></script>
+  <script src="static/assets/js/plugins/bootstrap-datepicker.min.js"></script>
   <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <script src="/static/assets/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
+  <script src="static/assets/js/argon-design-system.min.js?v=1.2.2" type="text/javascript"></script>
   <script>
     function scrollToDownload() {
 
