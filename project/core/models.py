@@ -105,26 +105,27 @@ class Case(models.Model):
         max_length=30, blank=True, null=True, unique=True
     )
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
-    appeals_court = models.ForeignKey(AppealsCourt, on_delete=models.CASCADE,
-                                      blank=True, null=True)
+    appeals_court = models.ForeignKey(
+        AppealsCourt, on_delete=models.CASCADE, blank=True, null=True
+    )
     card = models.URLField(max_length=200, blank=True, null=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
-    claim_price = models.DecimalField(max_digits=10,
-                                      decimal_places=2, default=0)
-    gp_charge = models.DecimalField(max_digits=10,
-                                    decimal_places=2, default=0)
-    status = models.CharField(max_length=20,
-                              choices=STATUS_CHOICES,
-                              default='no_status')
+    claim_price = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0
+    )
+    gp_charge = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0
+    )
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='no_status')
 
     class Meta:
         verbose_name = 'Дело'
         verbose_name_plural = 'Дела'
         constraints = [
             models.UniqueConstraint(
-                fields=['court', 'case_id'],
-                name='unique_court_case'
+                fields=['court', 'case_id'], name='unique_court_case'
             )
         ]
 
