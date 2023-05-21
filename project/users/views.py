@@ -1,36 +1,32 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import LoginView, LogoutView
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-
-from .forms import CustomUserCreationForm, LoginForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import login as auth_login, logout as auth_logout
+from .forms import UserRegistrationForm, UserLoginForm
 
 
-class RegisterView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('core:home')
-    template_name = 'accounts/register.html'
-
-    def form_valid(self, form):
-        """
-        Validates a form and logs in the user if it exists in the database.
-        """
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password1')
-        user = authenticate(email=email, password=password)
-        if user is not None:
-            login(self.request, user)
-            return super().form_valid(form)
-        else:
-            form.add_error('email', 'Invalid email or password')
-            return self.form_invalid(form)
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('core:home')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'accounts/register.html', {'form': form})
 
 
+def login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user)
+            return redirect('core:home')
+    else:
+        form = UserLoginForm()
+    return render(request, 'accounts/login.html', {'form': form})
 
-class CustomLoginView(LoginView):
-    authentication_form = LoginForm
-    template_name = 'accounts/login.html'
 
-
-class CustomLogoutView(LogoutView):
-    template_name = 'home/index.html'
+def logout(request):
+    auth_logout(request)
+    return redirect('core:index')
