@@ -20,7 +20,11 @@ class RegisterView(CreateView):
         user = authenticate(email=email, password=password)
         if user is not None:
             login(self.request, user)
-        return super().form_valid(form)
+            return super().form_valid(form)
+        else:
+            form.add_error('email', 'Invalid email or password')
+            return self.form_invalid(form)
+
 
 
 class CustomLoginView(LoginView):

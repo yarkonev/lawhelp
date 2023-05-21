@@ -8,16 +8,11 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
-    """
-    Custom registration form that uses email instead of username.
-    Added widgets with page style matching.
-    """
     email = forms.EmailField(error_messages={
         'unique': 'Аккаунт с такой почтой уже зарегистрирован.'
         },
         widget=EmailInput(
             attrs={
-                'class': 'form-control',
                 'placeholder': 'Email',
             }
         )
@@ -26,7 +21,6 @@ class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
             'placeholder': 'Password'}
         )
     )
@@ -34,7 +28,6 @@ class CustomUserCreationForm(UserCreationForm):
     password2 = forms.CharField(
         label='Password confirmation',
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
             'placeholder': 'Repeat password'}
         )
     )
