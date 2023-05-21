@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # New apps
     'core',
     'users',
+    # Third party apps
+    'widget_tweaks',
     # Default apps
     'django.contrib.admin',
     'django.contrib.auth',

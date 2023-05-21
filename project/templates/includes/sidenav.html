@@ -1,3 +1,4 @@
+{% if user.is_authenticated %}
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
   <div class="scrollbar-inner">
     <!-- Brand -->
@@ -42,24 +43,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login.html">
-              <i class="ni ni-key-25 text-info"></i>
-              <span class="nav-link-text">Login (template)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register.html">
-              <i class="ni ni-circle-08 text-pink"></i>
-              <span class="nav-link-text">Register (template)</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'users:logout' %}">
               <i class="ni ni-user-run text-red"></i>
-              <span class="nav-link-text">Logout</span>
+              <span class="nav-link-text">Выйти</span>
             </a>
-          </li>            
+          </li>  
         </ul>
         <!-- Divider -->
         <hr class="my-3">
@@ -101,3 +89,4 @@
     </div>
   </div>
 </nav>
+{% endif %}

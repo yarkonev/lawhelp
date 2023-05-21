@@ -29,4 +29,4 @@ class CustomLoginView(LoginView):
 
 
 class CustomLogoutView(LogoutView):
-    template_name = 'accounts/login.html'
+    template_name = 'home/index.html'

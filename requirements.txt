@@ -19,3 +19,4 @@ python-docx==0.8.11
 six==1.16.0
 sqlparse==0.4.3
 python-dotenv==1.0.0
+django-widget-tweaks==1.4.12

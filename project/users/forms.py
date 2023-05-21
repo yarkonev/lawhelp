@@ -60,7 +60,6 @@ class LoginForm(AuthenticationForm):
         label=_("Email"),
         widget=EmailInput(attrs={
             'autofocus': True,
-            'class': 'form-control',
             'placeholder': 'Email'}
             )
     )
@@ -68,7 +67,6 @@ class LoginForm(AuthenticationForm):
         label="Password", strip=False,
         widget=forms.PasswordInput(attrs={
             'autofocus': True,
-            'class': 'form-control',
             'placeholder': 'Password'}
             )
         )

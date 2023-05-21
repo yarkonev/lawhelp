@@ -1,5 +1,7 @@
 {% extends 'layouts/base-fullscreen.html' %}
 
+{% load widget_tweaks %}
+
 {% block title %} Login {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
@@ -39,7 +41,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    {{ form.username }}
+                    {{ form.username|add_class:"form-control" }}
                   </div>
                 </div>
                 <div class="form-group">
@@ -47,7 +49,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    {{ form.password }}
+                    {{ form.password|add_class:"form-control" }}
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">

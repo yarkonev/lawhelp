@@ -1,5 +1,7 @@
 {% extends 'layouts/base-fullscreen.html' %}
 
+{% load widget_tweaks  %}
+
 {% block title %} Register {% endblock title %}
 
 <!-- Specific CSS goes HERE -->
@@ -36,22 +38,14 @@
 
                   {% csrf_token %}
             
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                      </div>
-                      {{ form.username }}
-                    </div>
-                  </div>
-                  <span class="text-error">{{ form.username.errors }}</span>
+                  
 
                   <div class="form-group">
                     <div class="input-group input-group-alternative mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                       </div>
-                      {{ form.email }}
+                      {{ form.email|add_class:"form-control" }}
                     </div>
                   </div>
                   <span class="text-error">{{ form.email.errors }}</span>
@@ -61,7 +55,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      {{ form.password1 }}
+                      {{ form.password1|add_class:"form-control" }}
                     </div>
                   </div>
                   <span class="text-error">{{ form.password1.errors }}</span>
@@ -71,7 +65,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      {{ form.password2 }}
+                      {{ form.password2|add_class:"form-control" }}
                     </div>
                   </div>
                   <span class="text-error">{{ form.password2.errors }}</span>
