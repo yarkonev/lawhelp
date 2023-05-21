@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login, logout as auth_logout
-from .forms import UserRegistrationForm, UserLoginForm
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from django.shortcuts import redirect, render
+
+from .forms import UserLoginForm, UserRegistrationForm
 
 
 def register(request):
@@ -12,7 +14,7 @@ def register(request):
             return redirect('core:home')
     else:
         form = UserRegistrationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
 
 
 def login(request):
@@ -24,7 +26,7 @@ def login(request):
             return redirect('core:home')
     else:
         form = UserLoginForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
 
 
 def logout(request):
