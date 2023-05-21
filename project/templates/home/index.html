@@ -23,8 +23,13 @@
         Hello
       </h1>
       <p class="text-black mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+      {% if user.is_authenticated %}
+      <a href="{% url 'core:home' %}" class="btn btn-neutral">В личный кабинет</a>
+      <a href="{% url 'users:logout' %}" class="btn btn-neutral">Выйти</a>
+      {% else %}
       <a href="{% url 'users:login' %}" class="btn btn-neutral">Войти</a>
       <a href="{% url 'users:register' %}" class="btn btn-neutral">Зарегистрироваться</a>
+      {% endif %}
     </div>
     
     {% include "includes/footer.html" %}
