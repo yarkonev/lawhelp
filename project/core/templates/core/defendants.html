@@ -17,10 +17,6 @@
               </ol>
             </nav>
           </div>
-          <div class="col-lg-6 col-5 text-right">
-            <a href="#" class="btn btn-sm btn-neutral">New</a>
-            <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-          </div>
         </div>
       </div>
     </div>
@@ -33,7 +29,7 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Дела</h3>
+            <h3 class="mb-0">Ответчики</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
@@ -114,10 +110,10 @@
             {% empty %}
               <div class="col-sm-9">
                 <p>
-                    Список истцов пуст.
+                    Список ответчиков пуст.
                 </p>
                 <p>
-                    <a href="{% url 'core:new_defendant' %}">Добавить нового истца</a>
+                    <a href="{% url 'core:new_defendant' %}">Добавить нового ответчика</a>
                 </p>
               </div>
             {% endfor %}
