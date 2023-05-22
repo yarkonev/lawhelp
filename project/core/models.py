@@ -9,7 +9,7 @@ class LegalEntity(models.Model):
         max_length=100, verbose_name='Полное наименование'
     )
     short_name = models.CharField(
-        max_length=30, verbose_name='Короткое наименование'
+        max_length=30, verbose_name='Сокращенное наименование'
     )
     ogrn = models.CharField(max_length=13, unique=True, verbose_name='ОГРН')
     inn = models.CharField(max_length=10, unique=True, verbose_name='ИНН')

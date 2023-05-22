@@ -37,60 +37,25 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="name">Дело</th>
-                  <th scope="col" class="sort" data-sort="budget">Сумма иска</th>
-                  <th scope="col" class="sort" data-sort="status">Статус</th>
-                  <th scope="col">Users</th>
-                  <th scope="col" class="sort" data-sort="completion">Completion</th>
-                  <th scope="col"></th>
+                  <th scope="col" class="sort" data-sort="name">Сокращенное наименование</th>
+                  <th scope="col" class="sort" data-sort="budget">ОГРН</th>
+                  <th scope="col" class="sort" data-sort="status">ИНН</th>
                 </tr>
               </thead>
               <tbody class="list">
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
-                      <a href="#" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="/static/assets/img/theme/bootstrap.jpg">
-                      </a>
                       <div class="media-body">
-                        <a href="{% url 'core:case' case.case_id %}">{{ case }}</a>
+                        <a href="{% url 'core:plaintiff-detail' plaintiff.firm_id %}">{{ plaintiff }}</a>
                       </div>
                     </div>
                   </th>
-                  <td class="budget">
-                    {{ case.claim_price }}
+                  <td>
+                    {{ plaintiff.ogrn }}
                   </td>
                   <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i>
-                      <span class="status">{{ case.status }}</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                        <img alt="Image placeholder" src="/static/assets/img/theme/team-1.jpg">
-                      </a>
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                        <img alt="Image placeholder" src="/static/assets/img/theme/team-2.jpg">
-                      </a>
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                        <img alt="Image placeholder" src="/static/assets/img/theme/team-3.jpg">
-                      </a>
-                      <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                        <img alt="Image placeholder" src="/static/assets/img/theme/team-4.jpg">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">60%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                        </div>
-                      </div>
-                    </div>
+                    {{ plaintiff.inn }}
                   </td>
                   <td class="text-right">
                     <div class="dropdown">

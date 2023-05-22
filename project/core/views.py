@@ -87,25 +87,6 @@ def plaintiffs(request):
 
 @login_required
 def new_plaintiff(request):
-    """
-    View function for creating a new plaintiff.
-    If the request method is GET, render the plaintiff form.
-    If the request method is POST, validate the form data and
-    save a new plaintiff.
-    If the form is invalid, render the plaintiff form with errors.
-    If the plaintiff is successfully saved, redirect to the 'cases' page.
-
-    Args:
-    - request: the HTTP request object
-
-    Returns:
-    - If the request method is GET, a rendered 'new_plaintiff'
-    template with the plaintiff form.
-    - If the request method is POST and the form is invalid, a rendered
-    'new_plaintiff' template with the plaintiff form and errors.
-    - If the request method is POST and the plaintiff is successfully
-    saved, a redirect to the 'cases' page.
-    """
     if request.method != 'POST':
         form = PlaintiffForm()
     else:
@@ -113,7 +94,7 @@ def new_plaintiff(request):
         if form.is_valid():
             new_plaintiff = form.save(commit=False)
             new_plaintiff.save()
-            return redirect('core:cases')
+            return redirect('core:plaintiffs')
 
     context = {
         'form': form,
@@ -133,22 +114,6 @@ def defendants(request):
 
 @login_required
 def new_defendant(request):
-    """
-    This function creates a new defendant object
-    with the data provided by the user through a POST request.
-    If the request method is GET, it returns a new DefendantForm object.
-    If the request method is POST and the form is valid,
-    the new defendant object is saved and the user is redirected
-    to the 'core:cases' URL.
-    If the form is invalid, it renders the 'core/new_defendant.html'
-    template with the invalid form and returns the resulting HTML.
-
-    Args:
-    - request (HttpRequest): The HTTP request containing the form data.
-
-    Returns:
-    - HttpResponse: The HTTP response containing the rendered template.
-    """
     if request.method != 'POST':
         form = DefendantForm()
     else:
@@ -156,7 +121,7 @@ def new_defendant(request):
         if form.is_valid():
             new_defendant = form.save(commit=False)
             new_defendant.save()
-            return redirect('core:cases')
+            return redirect('core:defendants')
 
     context = {
         'form': form,
@@ -233,22 +198,8 @@ def edit_case(request, case_id):
 
 
 @login_required
-def plaintiff_detail(request, plaintiff_id):
-    """
-    Render a defendant's detail page based on their id.
-
-    Args:
-    - request: A Django HttpRequest object.
-    - defendant_id: An integer representing the id of the defendant.
-
-    Returns:
-    - A rendered HttpResponse object with the context containing the defendant
-    information.
-
-    Raises:
-    - Http404: If no defendant exists with the given ID.
-    """
-    plaintiff = get_object_or_404(Plaintiff, firm_id=plaintiff_id)
+def plaintiff_detail(request, firm_id):
+    plaintiff = get_object_or_404(Plaintiff, firm_id=firm_id)
     context = {
         'plaintiff': plaintiff,
     }
