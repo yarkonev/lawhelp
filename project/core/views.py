@@ -123,6 +123,15 @@ def new_plaintiff(request):
 
 
 @login_required
+def defendants(request):
+    defendants = Defendant.objects.all()
+    context = {
+        'defendants': defendants,
+    }
+    return render(request, 'core/defendants.html', context)
+
+
+@login_required
 def new_defendant(request):
     """
     This function creates a new defendant object
