@@ -1,5 +1,7 @@
 {% extends 'layouts/base.html' %}
 
+{% load widget_tweaks %}
+
 {% block title %} Maps {% endblock title %}
 
 {% block content %}
@@ -48,17 +50,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.number.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.number }}
-                        </div>
+                          {{ form.number|add_class:'form-control' }}
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.card.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.card }}
-                        </div>
+                          {{ form.card|add_class:'form-control' }}
                       </div>
                     </div>
                   </div>
@@ -66,17 +64,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.court.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.court }}
-                        </div>
+                          {{ form.court|add_class:'form-control' }}
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.appeals_court.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.appeals_court }}
-                        </div>
+                          {{ form.appeals_court|add_class:'form-control' }}
                       </div>
                     </div>
                   </div>
@@ -84,17 +78,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.plaintiff.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.plaintiff }}
-                        </div>
+                          {{ form.plaintiff|add_class:'form-control' }}
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.defendant.label_tag }}</label>
-                        <div class="form_control">
-                          {{ form.defendant }}
-                        </div>
+                          {{ form.defendant|add_class:'form-control' }}
                       </div>
                     </div>
                   </div>
@@ -102,17 +92,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.claim_price.label_tag}}</label>
-                        <div class="form_control">
-                          {{ form.claim_price }}
-                        </div>
+                          {{ form.claim_price|add_class:'form-control' }}
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label">{{ form.gp_charge.label_tag}}</label>
-                        <div class="form_control">
-                          {{ form.gp_charge }}
-                        </div>
+                          {{ form.gp_charge|add_class:'form-control' }}
                       </div>
                     </div>
                   </div>
