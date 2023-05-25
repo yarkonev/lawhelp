@@ -16,6 +16,6 @@ urlpatterns = [
     path('plaintiff-detail/<uuid:firm_id>', views.plaintiff_detail, name='plaintiff-detail'),
     path('defendants/', views.defendants, name='defendants'),
     path('new_defendant/', views.new_defendant, name='new_defendant'),
-    path('defendant-detail/<uuid:defendant_id>', views.defendant_detail, name='defendant_detail'),
+    path('defendant-detail/<uuid:defendant_id>', views.defendant_detail, name='defendant-detail'),
     path('make_petition/<uuid:case_id>/', views.make_petition_view, name='make_petition_view'),
 ]

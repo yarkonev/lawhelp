@@ -33,16 +33,17 @@
           </div>
           <!-- Light table -->
           <div class="table-responsive">
-            {% for plaintiff in plaintiffs %}
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
                   <th scope="col" class="sort" data-sort="name">Сокращенное наименование</th>
                   <th scope="col" class="sort" data-sort="budget">ОГРН</th>
                   <th scope="col" class="sort" data-sort="status">ИНН</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody class="list">
+                {% for plaintiff in plaintiffs %}
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
@@ -70,18 +71,22 @@
                     </div>
                   </td>
                 </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">
+                        <div class="col-sm-9">
+                            <p>
+                                Список истцов пуст.
+                            </p>
+                            <p>
+                                <a href="{% url 'core:new_plaintiff' %}">Добавить нового истца</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
               </tbody>
             </table>
-            {% empty %}
-              <div class="col-sm-9">
-                <p>
-                    Список истцов пуст.
-                </p>
-                <p>
-                    <a href="{% url 'core:new_plaintiff' %}">Добавить нового истца</a>
-                </p>
-              </div>
-            {% endfor %}
           </div>
           <!-- Card footer -->
           <div class="card-footer py-4">
