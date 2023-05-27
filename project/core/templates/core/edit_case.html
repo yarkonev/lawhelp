@@ -1,17 +1,114 @@
 {% extends 'home/index.html' %}
 
-{% block page_header%}
-    <h2>Редактировать дело:</h2>
-{% endblock page_header%}
+{% load widget_tweaks %}
+
+{% block title%} Редактировать дело {% endblock title%}
 
 {% block content %}
-    <p>
-        <a href="{% url 'core:case' case.case_id %}">{{ case }}</a>
-    </p>
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row align-items-center py-4">
+              <div class="col-lg-6 col-7">
+                <h6 class="h2 text-white d-inline-block mb-0">Редактировать дело</h6>
+                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                  <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'core:cases' %}">Дела</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Редактировать дело</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
-    <form method="post" action="{% url 'core:edit_case' case.case_id %}" class="form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit" class="btn btn-primary">Сохранить изменения</button>
-    </form>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h3 class="mb-0">Редактировать дело {{ case }}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form method="post" action="{% url 'core:edit_case' case.case_id %}">
+                  {% csrf_token %}
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.number.label_tag }}</label>
+                            {{ form.number|add_class:'form-control' }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.card.label_tag }}</label>
+                            {{ form.card|add_class:'form-control' }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.court.label_tag }}</label>
+                            {{ form.court|add_class:'form-control' }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.appeals_court.label_tag }}</label>
+                            {{ form.appeals_court|add_class:'form-control' }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.plaintiff.label_tag }}</label>
+                            {{ form.plaintiff|add_class:'form-control' }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.defendant.label_tag }}</label>
+                            {{ form.defendant|add_class:'form-control' }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.claim_price.label_tag}}</label>
+                            {{ form.claim_price|add_class:'form-control' }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label">{{ form.gp_charge.label_tag}}</label>
+                            {{ form.gp_charge|add_class:'form-control' }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <button name="submit" class="btn btn-sm btn-primary">Сохранить изменения</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        {% include "includes/footer.html" %}
+        
+      </div>
+
 {% endblock content %}
