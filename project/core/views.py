@@ -203,6 +203,26 @@ def defendant_detail(request, defendant_id):
 
 
 @login_required
+def edit_plaintiff(request, plaintiff_id):
+    plaintiff = Plaintiff.objects.get(firm_id=plaintiff_id)
+
+    if request.method != 'POST':
+        form = PlaintiffForm(instance=plaintiff)
+    else:
+        form = PlaintiffForm(instance=plaintiff, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('core:plaintiff_detail', plaintiff_id=plaintiff_id)
+
+    context = {
+        'plaintiff': plaintiff,
+        'form': form,
+    }
+
+    return render(request, 'core/edit_plaintiff.html', context)
+
+
+@login_required
 def edit_defendant(request, defendant_id):
     defendant = Defendant.objects.get(firm_id=defendant_id)
 

@@ -15,6 +15,7 @@
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="{% url 'core:cases' %}">Дела</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'core:case' case.case_id %}">{{ case }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Редактировать дело</li>
                   </ol>
                 </nav>
