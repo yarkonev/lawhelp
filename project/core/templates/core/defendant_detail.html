@@ -5,29 +5,63 @@
 {% endblock page_header%}
 
 {% block content %}
-    <table class="table align-items-center table-flush">
-        <tbody class="list">
-            <tr>
-                <th>Полное наименование</th>
-                <td>{{ defendant.full_name }}</td>
-            </tr>
-            <tr>
-                <th>Краткое наименование</th>
-                <td>{{ defendant.short_name }}</td>
-            </tr>
-            <tr>
-                <th>ОГРН</th>
-                <td>{{ defendant.ogrn }}</td>
-            </tr>
-            <tr>
-                <th>ИНН</th>
-                <td>{{ defendant.inn }}</td>
-            </tr>
-            <tr>
-                <th>Адрес</th>
-                <td>{{ defendant.address }}</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <!-- Breadcrumbs-->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+                <h6 class="h2 text-white d-inline-block mb-0">Ответчики</h6>
+                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                    <li class="breadcrumb-item"><a href="{% url 'core:home' %}"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'core:defendants' %}">Ответчики</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ defendant.short_name }}</li>
+                </ol>
+                </nav>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">{{ defendant.short_name }}</h3>
+                    </div>
+                    <table class="table align-items-center table-flush">
+                        <tbody class="list">
+                            <tr>
+                                <th>Полное наименование</th>
+                                <td>{{ defendant.full_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Краткое наименование</th>
+                                <td>{{ defendant.short_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>ОГРН</th>
+                                <td>{{ defendant.ogrn }}</td>
+                            </tr>
+                            <tr>
+                                <th>ИНН</th>
+                                <td>{{ defendant.inn }}</td>
+                            </tr>
+                            <tr>
+                                <th>Адрес</th>
+                                <td>{{ defendant.address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}
