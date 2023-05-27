@@ -166,19 +166,6 @@ def new_case(request):
 
 @login_required
 def edit_case(request, case_id):
-    """
-    Renders a form to edit a Case object identified by `case_id`, or saves the
-    changes to the object if the form is submitted and valid.
-
-    Args:
-    - request (HttpRequest): The HTTP request object.
-    - case_id (int): The ID of the Case object to edit.
-
-    Returns:
-    - HttpResponse: A response containing the form to edit the Case object,
-    or a redirect to the Case object's detail view if the changes were saved
-    successfully.
-    """
     case = Case.objects.get(case_id=case_id)
 
     if request.method != 'POST':
@@ -198,8 +185,8 @@ def edit_case(request, case_id):
 
 
 @login_required
-def plaintiff_detail(request, firm_id):
-    plaintiff = get_object_or_404(Plaintiff, firm_id=firm_id)
+def plaintiff_detail(request, plaintiff_id):
+    plaintiff = get_object_or_404(Plaintiff, firm_id=plaintiff_id)
     context = {
         'plaintiff': plaintiff,
     }
@@ -208,24 +195,31 @@ def plaintiff_detail(request, firm_id):
 
 @login_required
 def defendant_detail(request, defendant_id):
-    """
-    Render the detail page for the defendant with the given ID.
-
-    Args:
-    - request (HttpRequest): The HTTP request.
-    - defendant_id (int): The ID of the defendant to display.
-
-    Returns:
-    - HttpResponse: The HTTP response containing the rendered page.
-
-    Raises:
-    - Http404: If no defendant exists with the given ID.
-    """
     defendant = get_object_or_404(Defendant, firm_id=defendant_id)
     context = {
         'defendant': defendant,
     }
     return render(request, 'core/defendant_detail.html', context)
+
+
+@login_required
+def edit_defendant(request, defendant_id):
+    defendant = Defendant.objects.get(firm_id=defendant_id)
+
+    if request.method != 'POST':
+        form = DefendantForm(instance=defendant)
+    else:
+        form = DefendantForm(instance=defendant, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('core:defendant_detail', defendant_id=defendant_id)
+
+    context = {
+        'defendant': defendant,
+        'form': form,
+    }
+
+    return render(request, 'core/edit_defendant.html', context)
 
 
 @login_required

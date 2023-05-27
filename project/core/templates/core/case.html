@@ -12,7 +12,6 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-                <h6 class="h2 text-white d-inline-block mb-0">Дела</h6>
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="{% url 'core:home' %}"><i class="fas fa-home"></i></a></li>
@@ -70,13 +69,13 @@
                             <tr>
                                 <th>Истец</th>
                                 <td>
-                                    <a href="{% url 'core:plaintiff-detail' case.plaintiff.firm_id %}">{{ case.plaintiff }}</a>
+                                    <a href="{% url 'core:plaintiff_detail' case.plaintiff.firm_id %}">{{ case.plaintiff }}</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Ответчик</th>
                                 <td>
-                                    <a href="{% url 'core:defendant-detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
+                                    <a href="{% url 'core:defendant_detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
                                 </td>
                             </tr>
                             <tr>

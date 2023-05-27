@@ -18,10 +18,10 @@
             {{ case.appeals_court }}
         {% endif %}
     <p>
-        Истец: <a href="{% url 'core:plaintiff-detail' case.plaintiff.firm_id %}">{{ case.plaintiff }}</a>
+        Истец: <a href="{% url 'core:plaintiff_detail' case.plaintiff.firm_id %}">{{ case.plaintiff }}</a>
     </p>
     <p>
-        Ответчик: <a href="{% url 'core:defendant-detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
+        Ответчик: <a href="{% url 'core:defendant_detail' case.defendant.firm_id %}">{{ case.defendant }}</a>
     </p>
     <p>Цена иска: {{ case.claim_price }}</p>
     <p>Госпошлина: {{ case.gp_charge }}</p>

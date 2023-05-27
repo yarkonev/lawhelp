@@ -2,7 +2,7 @@
 
 {% load widget_tweaks %}
 
-{% block title%} Редактировать дело {% endblock title%}
+{% block title%} Редактировать ответчика {% endblock title%}
 
 {% block content %}
     <!-- Header -->
@@ -15,7 +15,7 @@
                   <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="{% url 'core:cases' %}">Дела</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Редактировать дело</li>
+                    <li class="breadcrumb-item active" aria-current="page">Редактировать ответчика</li>
                   </ol>
                 </nav>
               </div>
@@ -23,7 +23,6 @@
           </div>
         </div>
     </div>
-
     <!-- Page content -->
     <div class="container-fluid mt--6">
         <div class="row">
@@ -32,19 +31,19 @@
               <div class="card-header">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h3 class="mb-0">Редактировать дело {{ case }}</h3>
+                    <h3 class="mb-0">Редактировать ответчика {{ defendant }}</h3>
                   </div>
                 </div>
               </div>
               <div class="card-body">
-                <form method="post" action="{% url 'core:edit_case' case.case_id %}">
+                <form method="post" action="{% url 'core:edit_defendant' defendant.firm_id %}">
                   {% csrf_token %}
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.number.label_tag }}</label>
-                            {{ form.number|add_class:'form-control' }}
+                          <label class="form-control-label">{{ form.full_name.label_tag }}</label>
+                          {{ form.full_name|add_class:'form-control' }}
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -57,42 +56,28 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.court.label_tag }}</label>
-                            {{ form.court|add_class:'form-control' }}
+                          <label class="form-control-label">{{ form.short_name.label_tag }}</label>
+                            {{ form.short_name|add_class:'form-control' }}
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.appeals_court.label_tag }}</label>
-                            {{ form.appeals_court|add_class:'form-control' }}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">{{ form.plaintiff.label_tag }}</label>
-                            {{ form.plaintiff|add_class:'form-control' }}
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label">{{ form.defendant.label_tag }}</label>
-                            {{ form.defendant|add_class:'form-control' }}
+                          <label class="form-control-label">{{ form.ogrn.label_tag }}</label>
+                            {{ form.ogrn|add_class:'form-control' }}
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.claim_price.label_tag}}</label>
-                            {{ form.claim_price|add_class:'form-control' }}
+                          <label class="form-control-label">{{ form.inn.label_tag }}</label>
+                            {{ form.inn|add_class:'form-control' }}
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.gp_charge.label_tag}}</label>
-                            {{ form.gp_charge|add_class:'form-control' }}
+                          <label class="form-control-label">{{ form.address.label_tag }}</label>
+                          {{ form.address|add_class:'form-control' }}
                         </div>
                       </div>
                     </div>
