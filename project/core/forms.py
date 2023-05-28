@@ -45,7 +45,38 @@ class DefendantForm(forms.ModelForm):
                   }
 
 
-class DocumentForm(forms.ModelForm):
+""" class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ['option']
+        fields = ['option'] """
+
+
+class DocumentForm(forms.Form):
+    OPTION_CHOICES = (
+        ('objection_to_defendant_response', 'Возражение на отзыв ответчика'),
+        ('legal_services_contract', 'Договор на оказание юридических услуг'),
+        ('application_for_issuance_of_execution_writ', 'Заявление о выдаче исполнительного листа'),
+        ('federal_tax_service_request', 'Запрос в ФНС'),
+        ('bank_application', 'Заявление в банк'),
+        ('application_for_recovery_of_court_costs', 'Заявление о взыскании судебных расходов'),
+        ('application_for_duty_setoff', 'Заявление о зачете госпошлины'),
+        ('application_for_motivated_decision', 'Заявление о составлении мотивированного решения'),
+        ('application_for_enforcement_of_execution_document', 'Заявление об исполнении исполнительного документа'),
+        ('envelopes', 'Конверты'),
+        ('settlement_agreement', 'Мировое соглашение'),
+        ('third_party_explanations', 'Пояснения третьего лица'),
+        ('petition', 'Ходатайство'),
+        ('motion_for_return_of_complaint', 'Ходатайство о возвращении искового заявления'),
+        ('motion_for_retransmission_of_court_order', 'Ходатайство о повторном направлении определения суда'),
+        ('motion_for_absentia_review', 'Ходатайство о рассмотрении в отсутствие стороны'),
+        ('motion_for_online_participation', 'Ходатайство об участии онлайн'),
+        ('appeal_brief', 'Апелляционная жалоба (краткая)'),
+        ('case_explanation', 'Объяснение по делу'),
+        ('motion_for_submission_of_evidence', 'Ходатайство о приобщении доказательств')
+    )
+
+    documents = forms.MultipleChoiceField(
+        label='Создать документы',
+        choices=OPTION_CHOICES,
+        widget=forms.CheckboxSelectMultiple
+    )

@@ -38,19 +38,7 @@ def cases(request):
 
 @login_required
 def case(request, case_id):
-    """
-    Renders the detail view of a legal case identified by its primary key.
-
-    Args:
-    - request: the HTTP request object
-    - case_id: the primary key of the case object to retrieve
-
-    Returns:
-    - an HTTP response with the rendered case template
-
-    Raises:
-    - Http404: If the case with the given id does not exist.
-    """
+    form = DocumentForm()
     case = get_object_or_404(Case, case_id=case_id)
     context = {
         'case': case,
@@ -61,6 +49,7 @@ def case(request, case_id):
         'number': case.number,
         'claim_price': case.claim_price,
         'gp_charge': case.gp_charge,
+        'form': form,
     }
     return render(request, 'core/case.html', context)
 
@@ -242,7 +231,24 @@ def edit_defendant(request, defendant_id):
     return render(request, 'core/edit_defendant.html', context)
 
 
-@login_required
+""" @login_required
 def make_petition_view(request, case_id):
     case = Case.objects.get(case_id=case_id)
-    return make_petition(case)
+    return make_petition(case) """
+
+
+def make_petition_view(request, case_id):
+    case = Case.objects.get(case_id=case_id)
+    if request.method == 'POST':
+        form = DocumentForm(request.POST)
+        if form.is_valid():
+            selected_documents = []
+            for option in form.cleaned_data['documents']:
+                selected_documents.append(option)
+            
+            response = make_petition(case, selected_documents)
+            return response
+    else:
+        form = DocumentForm()
+    
+    return render(request, 'core/case.html', {'form': form})

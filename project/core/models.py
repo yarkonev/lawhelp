@@ -58,7 +58,7 @@ class LegalInstitution(models.Model):
 
 
 class Document(models.Model):
-    OPTION_CHOICES = [
+    OPTION_CHOICES = (
         ('objection_to_defendant_response', 'Возражение на отзыв ответчика'),
         ('legal_services_contract', 'Договор на оказание юридических услуг'),
         ('application_for_issuance_of_execution_writ', 'Заявление о выдаче исполнительного листа'),
@@ -79,7 +79,7 @@ class Document(models.Model):
         ('appeal_brief', 'Апелляционная жалоба (краткая)'),
         ('case_explanation', 'Объяснение по делу'),
         ('motion_for_submission_of_evidence', 'Ходатайство о приобщении доказательств')
-    ]
+    )
 
     option = models.CharField(
         max_length=100, choices=OPTION_CHOICES, verbose_name='Вид документа'

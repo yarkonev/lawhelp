@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from docxtpl import DocxTemplate
 
 
-def make_petition(case):
+def make_petition(case, selected_documents):
 
     # Open template document
     document = DocxTemplate(os.path.join(

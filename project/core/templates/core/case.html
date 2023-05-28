@@ -83,10 +83,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-5 text-left">
-            <a href="{% url 'core:edit_case' case.case_id %}" class="btn btn-sm btn-primary">Редактировать дело</a>
-            <a href="{% url 'core:make_petition_view' case.case_id %}" class="btn btn-sm btn-primary">Создать ходатайство</a>
+        <div class="row">
+            <div class="col">
+                <div class="card">                
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                        <form method="POST" action="{% url 'core:make_petition_view' case.case_id %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-sm btn-primary">Создать документ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    
+                </div>
+            </div>
         </div>
-    </div>
+    </div>      
 
 {% endblock content %}
