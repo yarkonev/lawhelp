@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 
-from .forms import CaseForm, DefendantForm, PlaintiffForm
+from .forms import CaseForm, DefendantForm, PlaintiffForm, DocumentForm
 from .make_doc import make_petition
 from .models import Case, Defendant, Plaintiff
 from .services import count_court_fee
@@ -244,15 +244,5 @@ def edit_defendant(request, defendant_id):
 
 @login_required
 def make_petition_view(request, case_id):
-    """
-    View function that generates a petition for a given case.
-
-    Args:
-    - request (HttpRequest): The request object.
-    - case_id (int): The ID of the case for which to generate the petition.
-
-    Returns:
-    - HttpResponse: A response containing the generated petition as docx file.
-    """
     case = Case.objects.get(case_id=case_id)
     return make_petition(case)
