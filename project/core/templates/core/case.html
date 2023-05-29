@@ -1,5 +1,7 @@
 {% extends 'home/index.html' %}
 
+{% load widget_tweaks %}
+
 {% block page_header%}
     <h2>Судебное дело</h2>
 {% endblock page_header%}
@@ -82,22 +84,22 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col">
-                <div class="card">                
+                <div class="card">
                     <div class="custom-control custom-control-alternative custom-checkbox">
                         <form method="POST" action="{% url 'core:make_petition_view' case.case_id %}">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-sm btn-primary">Создать документ</button>
+                            <div class="card-header border-0">
+                                <label class="form-control-label">
+                                    <h3 class="mb-0">{{ form.documents.label }}</h3>
+                                </label>
+                            </div>
+                            {{ form.documents }}
+                            <div class="border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                                <button type="submit" class="btn btn-sm btn-primary">Создать документ</button>
+                            </div>
                         </form>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    
                 </div>
             </div>
         </div>
