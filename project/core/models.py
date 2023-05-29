@@ -57,38 +57,6 @@ class LegalInstitution(models.Model):
         abstract = True
 
 
-class Document(models.Model):
-    OPTION_CHOICES = (
-        ('objection_to_defendant_response', 'Возражение на отзыв ответчика'),
-        ('legal_services_contract', 'Договор на оказание юридических услуг'),
-        ('application_for_issuance_of_execution_writ', 'Заявление о выдаче исполнительного листа'),
-        ('federal_tax_service_request', 'Запрос в ФНС'),
-        ('bank_application', 'Заявление в банк'),
-        ('application_for_recovery_of_court_costs', 'Заявление о взыскании судебных расходов'),
-        ('application_for_duty_setoff', 'Заявление о зачете госпошлины'),
-        ('application_for_motivated_decision', 'Заявление о составлении мотивированного решения'),
-        ('application_for_enforcement_of_execution_document', 'Заявление об исполнении исполнительного документа'),
-        ('envelopes', 'Конверты'),
-        ('settlement_agreement', 'Мировое соглашение'),
-        ('third_party_explanations', 'Пояснения третьего лица'),
-        ('petition', 'Ходатайство'),
-        ('motion_for_return_of_complaint', 'Ходатайство о возвращении искового заявления'),
-        ('motion_for_retransmission_of_court_order', 'Ходатайство о повторном направлении определения суда'),
-        ('motion_for_absentia_review', 'Ходатайство о рассмотрении в отсутствие стороны'),
-        ('motion_for_online_participation', 'Ходатайство об участии онлайн'),
-        ('appeal_brief', 'Апелляционная жалоба (краткая)'),
-        ('case_explanation', 'Объяснение по делу'),
-        ('motion_for_submission_of_evidence', 'Ходатайство о приобщении доказательств')
-    )
-
-    option = models.CharField(
-        max_length=100, choices=OPTION_CHOICES, verbose_name='Вид документа'
-    )
-
-    class Meta:
-        abstract = True
-
-
 class Plaintiff(LegalEntity):
     class Meta:
         verbose_name = 'Истец'
@@ -130,6 +98,12 @@ class Case(models.Model):
         ('active', 'В работе'),
         ('completed', 'Завершено'),
         ('no_status', 'Нет статуса'),
+    )
+
+    COURT_LEVEL_CHOICES = (
+        ('first', 'Первая инстанция'),
+        ('second', 'Апелляция'),
+        ('third', 'Кассация'),
     )
 
     case_id = models.UUIDField(default=uuid.uuid4, editable=False)

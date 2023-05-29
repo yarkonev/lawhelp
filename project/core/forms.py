@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Case, Defendant, Plaintiff, Document
+from .models import Case, Defendant, Plaintiff
 
 
 class CaseForm(forms.ModelForm):
@@ -43,12 +43,6 @@ class DefendantForm(forms.ModelForm):
                   'inn': 'ИНН',
                   'address': 'Адрес',
                   }
-
-
-""" class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        fields = ['option'] """
 
 
 class DocumentForm(forms.Form):
