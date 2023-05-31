@@ -18,17 +18,6 @@ def home(request):
 
 @login_required
 def cases(request):
-    """
-    View function that retrieves all Case objects from the database and renders
-    them using the 'core/cases.html' template.
-
-    Args:
-    - request (HttpRequest): The HTTP request object.
-
-    Returns:
-    - HttpResponse: The HTTP response object that contains the rendered
-    template with the retrieved Case objects.
-    """
     cases = Case.objects.all()
     context = {
         'cases': cases,
@@ -56,17 +45,6 @@ def case(request, case_id):
 
 @login_required
 def plaintiffs(request):
-    """
-    View function that retrieves all Case objects from the database and renders
-    them using the 'core/cases.html' template.
-
-    Args:
-    - request (HttpRequest): The HTTP request object.
-
-    Returns:
-    - HttpResponse: The HTTP response object that contains the rendered
-    template with the retrieved Case objects.
-    """
     plaintiffs = Plaintiff.objects.all()
     context = {
         'plaintiffs': plaintiffs,
@@ -121,21 +99,6 @@ def new_defendant(request):
 
 @login_required
 def new_case(request):
-    """
-    Create a new case from a POST request or display an empty case form.
-    If the request is not a POST request, display
-    an empty case form.
-    If the request is a POST request, validate the form data and
-    create a new case.
-    If the new case has no GP charge, calculate it based on the claim price.
-    Redirect to the list of cases after creating the new case.
-
-    Args:
-    - request (HttpRequest): The HTTP request containing the form data.
-
-    Returns:
-    - HttpResponse: The HTTP response containing the rendered template.
-    """
     if request.method != 'POST':
         form = CaseForm()
     else:
@@ -229,12 +192,6 @@ def edit_defendant(request, defendant_id):
     }
 
     return render(request, 'core/edit_defendant.html', context)
-
-
-""" @login_required
-def make_petition_view(request, case_id):
-    case = Case.objects.get(case_id=case_id)
-    return make_petition(case) """
 
 
 def make_petition_view(request, case_id):

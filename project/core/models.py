@@ -115,7 +115,9 @@ class Case(models.Model):
     appeals_court = models.ForeignKey(
         ArbitrAppealsCourt, on_delete=models.CASCADE, blank=True, null=True
     )
-    card = models.URLField(max_length=200, blank=True, null=True, unique=True) # Карточка дела на сайте суда
+    card = models.URLField(
+        max_length=200, blank=True, null=True, unique=True
+    ) # Карточка дела на сайте суда
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
     claim_price = models.DecimalField(

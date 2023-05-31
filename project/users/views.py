@@ -1,7 +1,7 @@
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
 
 from .forms import UserLoginForm, UserRegistrationForm
 
