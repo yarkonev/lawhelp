@@ -35,6 +35,7 @@
           </div>
           <!-- Light table -->
           <div class="table-responsive">
+            {% for plaintiff in plaintiffs %}
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
@@ -45,7 +46,6 @@
                 </tr>
               </thead>
               <tbody class="list">
-                {% for plaintiff in plaintiffs %}
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
@@ -81,7 +81,7 @@
                                 Список истцов пуст.
                             </p>
                             <p>
-                                <a href="{% url 'core:new_plaintiff' %}">Добавить нового истца</a>
+                                <a href="{% url 'core:new_plaintiff' %}" class="btn btn-sm btn-primary">Добавить нового истца</a>
                             </p>
                         </div>
                     </td>

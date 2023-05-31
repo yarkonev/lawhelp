@@ -36,6 +36,7 @@
           </div>
           <!-- Light table -->
           <div class="table-responsive">
+            {% for defendant in defendants %}
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
@@ -46,7 +47,6 @@
                 </tr>
               </thead>
               <tbody class="list">
-                {% for defendant in defendants %}
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
@@ -82,7 +82,7 @@
                                 Список ответчиков пуст.
                             </p>
                             <p>
-                                <a href="{% url 'core:new_defendant' %}">Добавить нового ответчика</a>
+                                <a href="{% url 'core:new_defendant' %}" class="btn btn-sm btn-primary">Добавить нового ответчика</a>
                             </p>
                         </div>
                     </td>
