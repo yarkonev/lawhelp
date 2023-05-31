@@ -1,6 +1,7 @@
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .forms import UserLoginForm, UserRegistrationForm
 
@@ -32,3 +33,8 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('core:index')
+
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
