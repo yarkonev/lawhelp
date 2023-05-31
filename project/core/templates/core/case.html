@@ -39,6 +39,10 @@
                     <table class="table align-items-center table-flush">
                         <tbody class="list">
                             <tr>
+                                <th>Статус дела</th>
+                                <td>{{ case.get_status_display }}</td>
+                            </tr>
+                            <tr>
                                 <th>Номер дела</th>
                                 <td>
                                     {% if case.card %}

@@ -7,17 +7,15 @@ class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
         fields = [
-            'number', 'status', 'court_level', 'court',
-            'appeals_court', 'cassation_court', 'card',
+            'number', 'status', 'court',
+            'appeals_court', 'card',
             'plaintiff', 'defendant', 'claim_price', 'gp_charge'
         ]
         labels = {
             'number': 'Номер дела',
             'status': 'Статус дела',
-            'court_level': 'Инстанция',
-            'court': 'Суд первой инстанции',
-            'appeals_court': 'Апелляция',
-            'cassation_court': 'Кассация',
+            'court': 'Арбитражный суд первой инстанции',
+            'appeals_court': 'Арбитражный апелляционный суд',
             'card': 'Карточка дела',
             'plaintiff': 'Истец',
             'defendant': 'Ответчик',
@@ -52,26 +50,26 @@ class DefendantForm(forms.ModelForm):
 
 class DocumentForm(forms.Form):
     OPTION_CHOICES = (
-        ('objection_to_defendant_response', 'Возражение на отзыв ответчика'),
-        ('legal_services_contract', 'Договор на оказание юридических услуг'),
-        ('application_for_issuance_of_execution_writ', 'Заявление о выдаче исполнительного листа'),
-        ('federal_tax_service_request', 'Запрос в ФНС'),
-        ('bank_application', 'Заявление в банк'),
+        ('vozrazhenie_na otzyv_otvetchika', 'Возражение на отзыв ответчика'),
+        ('dogovor_yuridicheskih_uslug', 'Договор на оказание юридических услуг'),
+        ('zayavlenie_o_vydache_ispolnitelnogo_lista', 'Заявление о выдаче исполнительного листа'),
+        ('zapros_v_FNS', 'Запрос в ФНС'),
+        ('zayavlenie_v_bank', 'Заявление в банк'),
         ('application_for_recovery_of_court_costs', 'Заявление о взыскании судебных расходов'),
-        ('application_for_duty_setoff', 'Заявление о зачете госпошлины'),
-        ('application_for_motivated_decision', 'Заявление о составлении мотивированного решения'),
+        ('zayavlenie_o_zachete_gosposhliny', 'Заявление о зачете госпошлины'),
+        ('zayavlenie_o_sostavlenii_motivirovannogo_resheniya', 'Заявление о составлении мотивированного решения'),
         ('application_for_enforcement_of_execution_document', 'Заявление об исполнении исполнительного документа'),
-        ('envelopes', 'Конверты'),
-        ('settlement_agreement', 'Мировое соглашение'),
+        ('konverty', 'Конверты'),
+        ('mirovoe_soglashenie', 'Мировое соглашение'),
         ('third_party_explanations', 'Пояснения третьего лица'),
-        ('petition', 'Ходатайство'),
-        ('motion_for_return_of_complaint', 'Ходатайство о возвращении искового заявления'),
-        ('motion_for_retransmission_of_court_order', 'Ходатайство о повторном направлении определения суда'),
-        ('motion_for_absentia_review', 'Ходатайство о рассмотрении в отсутствие стороны'),
-        ('motion_for_online_participation', 'Ходатайство об участии онлайн'),
-        ('appeal_brief', 'Апелляционная жалоба (краткая)'),
-        ('case_explanation', 'Объяснение по делу'),
-        ('motion_for_submission_of_evidence', 'Ходатайство о приобщении доказательств')
+        ('hodatajstvo', 'Ходатайство'),
+        ('hodatajstvo_o_vozvrashenii_iskovogo_zayavleniya', 'Ходатайство о возвращении искового заявления'),
+        ('hodatajstvo_o_povtornom_napravlenii_opredeleniya_suda', 'Ходатайство о повторном направлении определения суда'),
+        ('hodatajstvo_o_rassmotrenii_v_otsutstvie_storony', 'Ходатайство о рассмотрении в отсутствие стороны'),
+        ('hodatajstvo_ob_uchastii_onlajn', 'Ходатайство об участии онлайн'),
+        ('apellyacionnaya_zhaloba_(kratkaya)', 'Апелляционная жалоба (краткая)'),
+        ('obyasnenie_po_delu', 'Объяснение по делу'),
+        ('hodatajstvo_o_priobshenii_dokazatelstv', 'Ходатайство о приобщении доказательств')
     )
 
     documents = forms.MultipleChoiceField(

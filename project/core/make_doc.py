@@ -27,7 +27,7 @@ def make_petition(case, selected_documents):
     # Open template document
     document = DocxTemplate(os.path.join(
         settings.STATICFILES_DIRS[0],
-        'docx_templates/petition.docx')
+        'docx_templates/hodatajstvo.docx')
         )
 
     # Update template with data

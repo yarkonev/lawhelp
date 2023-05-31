@@ -75,27 +75,19 @@ class Defendant(LegalEntity):
         return self.short_name
 
 
-class Court(LegalInstitution):
+class ArbitrCourt(LegalInstitution):
     class Meta:
-        verbose_name = 'Суд первой инстанции'
-        verbose_name_plural = 'Суды первой инстанции'
+        verbose_name = 'Арбитражный суд первой инстанции'
+        verbose_name_plural = 'Арбитражные суды первой инстанции'
 
     def __str__(self):
         return self.name
 
 
-class AppealsCourt(LegalInstitution):
+class ArbitrAppealsCourt(LegalInstitution):
     class Meta:
-        verbose_name = 'Апелляционный суд'
-        verbose_name_plural = 'Апелляционные суды'
-
-    def __str__(self):
-        return self.name
-
-
-class CassationCourt(LegalInstitution):
-    class Meta:
-        verbose_name = 'Кассационный суд'
+        verbose_name = 'Апелляционный арбитражный суд'
+        verbose_name_plural = 'Апелляционные арбитражные суды'
 
     def __str__(self):
         return self.name
@@ -103,33 +95,22 @@ class CassationCourt(LegalInstitution):
 
 class Case(models.Model):
     STATUS_CHOICES = (
-        ('active', 'В работе'),
-        ('completed', 'Завершено'),
-        ('no_status', 'Нет статуса'),
-    )
-
-    COURT_LEVEL_CHOICES = (
-        ('no_court', 'Не в суде'),
+        ('pretrial', 'Досудебный этап'),
         ('first', 'Первая инстанция'),
         ('second', 'Апелляция'),
         ('third', 'Кассация'),
+        ('completed', 'Завершено'),
     )
 
     case_id = models.UUIDField(default=uuid.uuid4, editable=False)
     number = models.CharField(
         max_length=30, blank=True, null=True, unique=True
     )
-    court_level = models.CharField(
-        max_length=20, choices=COURT_LEVEL_CHOICES, default='no_court'
-    )
     court = models.ForeignKey(
-        Court, on_delete=models.CASCADE, blank=True, null=True
+        ArbitrCourt, on_delete=models.CASCADE, blank=True, null=True
         )
     appeals_court = models.ForeignKey(
-        AppealsCourt, on_delete=models.CASCADE, blank=True, null=True
-    )
-    cassation_court = models.ForeignKey(
-        CassationCourt, on_delete=models.CASCADE, blank=True, null=True
+        ArbitrAppealsCourt, on_delete=models.CASCADE, blank=True, null=True
     )
     card = models.URLField(max_length=200, blank=True, null=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
