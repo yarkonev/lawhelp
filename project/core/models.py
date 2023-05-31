@@ -103,16 +103,19 @@ class Case(models.Model):
     )
 
     case_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    legalcase_num = models.CharField(
+        max_length=30, blank=True, null=True, unique=True
+    ) # Внутренний номер
     number = models.CharField(
         max_length=30, blank=True, null=True, unique=True
-    )
+    ) # Судебный номер дела
     court = models.ForeignKey(
         ArbitrCourt, on_delete=models.CASCADE, blank=True, null=True
         )
     appeals_court = models.ForeignKey(
         ArbitrAppealsCourt, on_delete=models.CASCADE, blank=True, null=True
     )
-    card = models.URLField(max_length=200, blank=True, null=True, unique=True)
+    card = models.URLField(max_length=200, blank=True, null=True, unique=True) # Карточка дела на сайте суда
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)
     defendant = models.ForeignKey(Defendant, on_delete=models.CASCADE)
     claim_price = models.DecimalField(
