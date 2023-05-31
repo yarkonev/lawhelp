@@ -43,6 +43,10 @@
                                 <td>{{ case.get_status_display }}</td>
                             </tr>
                             <tr>
+                                <th>Внутренний номер</th>
+                                <td>{{ case.legalcase_num }}</td>
+                            </tr>
+                            <tr>
                                 <th>Номер дела</th>
                                 <td>
                                     {% if case.card %}
@@ -61,7 +65,7 @@
                                 <td>{{ case.gp_charge }}</td>
                             </tr>
                             <tr>
-                                <th>Суд</th>
+                                <th>Суд первой инстанции</th>
                                 <td>{{ case.court }}</td>
                             </tr>
                             <tr>

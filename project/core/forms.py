@@ -7,12 +7,13 @@ class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
         fields = [
-            'number', 'status', 'court',
+            'number', 'legalcase_num', 'status', 'court',
             'appeals_court', 'card',
             'plaintiff', 'defendant', 'claim_price', 'gp_charge'
         ]
         labels = {
-            'number': 'Номер дела',
+            'legalcase_num': 'Внутренний номер дела',
+            'number': 'Судебный номер дела',
             'status': 'Статус дела',
             'court': 'Арбитражный суд первой инстанции',
             'appeals_court': 'Арбитражный апелляционный суд',
