@@ -49,32 +49,26 @@
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label">{{ form.card.label_tag }}</label>
-                            {{ form.card|add_class:'form-control' }}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
                           <label class="form-control-label">{{ form.short_name.label_tag }}</label>
                             {{ form.short_name|add_class:'form-control' }}
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label">{{ form.ogrn.label_tag }}</label>
                             {{ form.ogrn|add_class:'form-control' }}
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label">{{ form.inn.label_tag }}</label>
                             {{ form.inn|add_class:'form-control' }}
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label">{{ form.address.label_tag }}</label>
@@ -85,7 +79,7 @@
                   </div>
                   <div class="col-4">
                     <button name="submit" class="btn btn-sm btn-primary">Сохранить изменения</button>
-                    <a href="{% url 'core:defendant_detail' defendant.firm_id %}" class="btn btn-sm btn-primary">Отмена</a>
+                    <a href="{% url 'core:defendant_detail' defendant.firm_id %}" class="btn btn-sm btn-secondary">Отмена</a>
                   </div>
                 </form>
               </div>

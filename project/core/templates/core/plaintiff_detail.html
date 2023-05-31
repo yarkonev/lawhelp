@@ -58,11 +58,11 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="card-header">
+                        <a href="{% url 'core:edit_plaintiff' plaintiff.firm_id %}" class="btn btn-sm btn-primary">Редактировать истца</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-5 text-left">
-            <a href="{% url 'core:edit_plaintiff' plaintiff.firm_id %}" class="btn btn-sm btn-primary">Редактировать истца</a>
         </div>
     </div>
 

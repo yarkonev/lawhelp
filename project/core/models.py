@@ -93,6 +93,14 @@ class AppealsCourt(LegalInstitution):
         return self.name
 
 
+class CassationCourt(LegalInstitution):
+    class Meta:
+        verbose_name = 'Кассационный суд'
+
+    def __str__(self):
+        return self.name
+
+
 class Case(models.Model):
     STATUS_CHOICES = (
         ('active', 'В работе'),
@@ -101,6 +109,7 @@ class Case(models.Model):
     )
 
     COURT_LEVEL_CHOICES = (
+        ('no_court', 'Не в суде'),
         ('first', 'Первая инстанция'),
         ('second', 'Апелляция'),
         ('third', 'Кассация'),
@@ -110,9 +119,17 @@ class Case(models.Model):
     number = models.CharField(
         max_length=30, blank=True, null=True, unique=True
     )
-    court = models.ForeignKey(Court, on_delete=models.CASCADE)
+    court_level = models.CharField(
+        max_length=20, choices=COURT_LEVEL_CHOICES, default='no_court'
+    )
+    court = models.ForeignKey(
+        Court, on_delete=models.CASCADE, blank=True, null=True
+        )
     appeals_court = models.ForeignKey(
         AppealsCourt, on_delete=models.CASCADE, blank=True, null=True
+    )
+    cassation_court = models.ForeignKey(
+        CassationCourt, on_delete=models.CASCADE, blank=True, null=True
     )
     card = models.URLField(max_length=200, blank=True, null=True, unique=True)
     plaintiff = models.ForeignKey(Plaintiff, on_delete=models.CASCADE)

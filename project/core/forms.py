@@ -7,18 +7,23 @@ class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
         fields = [
-            'number', 'court', 'appeals_court', 'card',
+            'number', 'status', 'court_level', 'court',
+            'appeals_court', 'cassation_court', 'card',
             'plaintiff', 'defendant', 'claim_price', 'gp_charge'
-            ]
-        labels = {'number': 'Номер дела',
-                  'court': 'Суд',
-                  'appeals_court': 'Апелляционный суд',
-                  'card': 'Карточка дела',
-                  'plaintiff': 'Истец',
-                  'defendant': 'Ответчик',
-                  'claim_price': 'Цена иска',
-                  'gp_charge': 'Госпошлина',
-                  }
+        ]
+        labels = {
+            'number': 'Номер дела',
+            'status': 'Статус дела',
+            'court_level': 'Инстанция',
+            'court': 'Суд первой инстанции',
+            'appeals_court': 'Апелляция',
+            'cassation_court': 'Кассация',
+            'card': 'Карточка дела',
+            'plaintiff': 'Истец',
+            'defendant': 'Ответчик',
+            'claim_price': 'Цена иска',
+            'gp_charge': 'Госпошлина',
+        }
 
 
 class PlaintiffForm(forms.ModelForm):
@@ -74,3 +79,4 @@ class DocumentForm(forms.Form):
         choices=OPTION_CHOICES,
         widget=forms.CheckboxSelectMultiple
     )
+    widget=forms.Select(attrs={'class': 'selectpicker', 'data-live-search': 'true'})
